@@ -1,0 +1,16 @@
+/**
+ * Design client — généré ou enrichi via Google Stitch + MCP Cursor.
+ * Voir .cursor/skills/appliquer-design-stitch/SKILL.md
+ *
+ * 1. Surcharger les tokens du socle (déclarés dans global.css, bloc `@theme`) :
+ *
+ *    :root {
+ *      --color-primary: #166534;
+ *      --color-primary-fg: #ffffff;
+ *      --font-sans: var(--font-inter);   ← police déclarée dans src/design/fonts.mjs
+ *      --radius-xl: 1rem;
+ *    }
+ *
+ * 2. Styler les éléments (h1, h2, p, .lead, .note), les hooks `[data-component="…"]`
+ *    et les classes sémantiques (.cta-primary, .cta-secondary, .form-field, .page-block…).
+ */

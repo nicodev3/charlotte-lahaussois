@@ -1,0 +1,18 @@
+---
+export const pageNav = {
+  navLabel: "À propos",
+  navOrder: 20,
+};
+
+import StandardPageLayout from "../layouts/StandardPageLayout.astro";
+import AboutPageContent from "../components/pages/AboutPageContent.astro";
+import { client } from "../lib/client";
+---
+
+<StandardPageLayout
+  title="À propos"
+  description={`Découvrez mon parcours et ma pratique à ${client.business.city}.`}
+  hidePageHeader
+>
+  <AboutPageContent />
+</StandardPageLayout>

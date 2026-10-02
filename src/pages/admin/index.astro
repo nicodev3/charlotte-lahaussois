@@ -1,0 +1,54 @@
+---
+import { PUBLIC_DECAP_OAUTH_BASE_URL } from "astro:env/server";
+import { getDecapAdminMeta, getDecapConfig } from "../../lib/cms/decapConfig";
+
+const config = getDecapConfig();
+const { repo, repoConfigured } = getDecapAdminMeta();
+const oauthBaseUrl = PUBLIC_DECAP_OAUTH_BASE_URL?.replace(/\/$/, "") ?? "";
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Édition du site</title>
+    <script is:inline>
+      window.CMS_MANUAL_INIT = true;
+    </script>
+    <script is:inline src="https://unpkg.com/decap-cms@3.16.0/dist/decap-cms.js"></script>
+    <style>
+      .cms-setup-banner {
+        font-family: ui-sans-serif, system-ui, sans-serif;
+        margin: 0;
+        padding: 0.75rem 1rem;
+        background: #fef3c7;
+        color: #78350f;
+        font-size: 0.875rem;
+        line-height: 1.4;
+      }
+    </style>
+  </head>
+  <body>
+    {
+      !repoConfigured && (
+        <p class="cms-setup-banner">
+          Dépôt GitHub non configuré (valeur actuelle : {repo}). Renseignez
+          <code>PUBLIC_GITHUB_REPO</code> (owner/repo) ou <code>src/data/cms.json</code>, puis
+          rebuild. En local, lancez aussi <code>npm run cms</code> à côté de{" "}
+          <code>npm run dev</code>.
+        </p>
+      )
+    }
+    <script is:inline define:vars={{ config, oauthBaseUrl }}>
+      const resolved = {
+        ...config,
+        backend: {
+          ...config.backend,
+          base_url: oauthBaseUrl || window.location.origin,
+        },
+      };
+      window.CMS.init({ config: resolved });
+    </script>
+  </body>
+</html>

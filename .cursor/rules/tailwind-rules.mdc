@@ -1,0 +1,6 @@
+---
+alwaysApply: true
+---
+Eviter autant que possible d'utiliser les custom values pour les tailles.
+Utiliser les classes canoniques de tailwind.
+

@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import initialClient from "../data/client.json";
+
+/** Évite qu’un `</script>` dans une chaîne du JSON ne ferme la balise HTML prématurément. */
+const initialClientJson = JSON.stringify(initialClient).replace(/</g, "\\u003c");
+---
+
+<BaseLayout title="Questionnaire — contenu du site">
+  <div class="min-h-screen bg-bg pb-32" data-component="client-config.page">
+    <header class="border-b border-muted/20 bg-accent/40">
+      <div class="site-container space-y-2 py-8 md:py-10">
+        <p class="text-sm font-medium tracking-wide text-primary">Étape de préparation</p>
+        <h1 class="text-2xl font-semibold tracking-tight text-fg md:text-3xl">
+          Contenu de votre site
+        </h1>
+        <p class="max-w-2xl text-base leading-relaxed text-muted">
+          Complétez chaque onglet, puis cliquez sur « Envoyer mes réponses » une fois le formulaire
+          terminé.
+        </p>
+      </div>
+    </header>
+    <div class="site-container pt-8" id="client-config-root"></div>
+    <!-- Texte échappé par Astro (évite innerHTML / & dans le JSON). Pas de <script> : Astro peut le vider. -->
+    <div id="client-config-initial-json" class="sr-only" aria-hidden="true">
+      {initialClientJson}
+    </div>
+    <!-- Import côté module : Vite regroupe le bundle dans /_astro/ pour la prod statique. -->
+    <script>
+      import "../scripts/client-config-bootstrap.ts";
+    </script>
+  </div>
+</BaseLayout>

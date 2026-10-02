@@ -1,0 +1,42 @@
+---
+import { client } from "../lib/client";
+import { professionConditionsConfidentialitySummary } from "../lib/client/professionCopy.ts";
+import { CONDITIONS_LIMITS_ITEMS } from "../lib/constants";
+
+const confidentialitySummary = professionConditionsConfidentialitySummary(client.profession);
+
+const c = client.conditions;
+---
+
+<section class="page-block" data-component="panel.conditions">
+  <h2>Conditions du suivi</h2>
+
+  <div class="grid gap-6 sm:grid-cols-2">
+    <div data-component="conditions.cancellation">
+      <p class="font-medium">Annulation</p>
+      <p class="note">Délai : {c.cancellation.noticeHours}h</p>
+      <p class="note">{c.cancellation.feePolicy}</p>
+    </div>
+
+    <div data-component="conditions.delay">
+      <p class="font-medium">Retard</p>
+      <p class="note">Tolérance : {c.delay.graceMinutes} min</p>
+      <p class="note">{c.delay.note}</p>
+    </div>
+
+    <div data-component="conditions.no-show">
+      <p class="font-medium">Absence non signalée</p>
+      <p class="note">{c.noShow.charged ? "Séance due" : "Non facturée"}</p>
+      <p class="note">{c.noShow.note}</p>
+    </div>
+  </div>
+
+  <p class="note">{confidentialitySummary}</p>
+
+  <div data-component="conditions.limits">
+    <p class="note">Limites</p>
+    <ul>
+      {CONDITIONS_LIMITS_ITEMS.map((item) => <li class="note">{item}</li>)}
+    </ul>
+  </div>
+</section>

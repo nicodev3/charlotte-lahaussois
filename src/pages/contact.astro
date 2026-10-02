@@ -1,0 +1,17 @@
+---
+export const pageNav = {
+  navLabel: "Contact",
+  /** Toujours en dernier dans le menu. */
+  navOrder: 100,
+};
+
+import StandardPageLayout from "../layouts/StandardPageLayout.astro";
+import ContactPageContent from "../components/pages/ContactPageContent.astro";
+---
+
+<StandardPageLayout
+  title="Contact"
+  description="Retrouvez ici les informations pour prendre rendez-vous, accéder au cabinet et me contacter."
+>
+  <ContactPageContent />
+</StandardPageLayout>

@@ -1,0 +1,56 @@
+---
+import { CalendarDays, MessagesSquare } from "@lucide/astro";
+import { client } from "../../lib/client";
+import { getSiteCopy } from "../../lib/siteCopy";
+import { heroEyebrowTagline } from "../../lib/client/heroEyebrowTagline";
+import { heroConsultationTaglineAfterPour } from "../../lib/client/heroConsultationTagline";
+import { professionHeroConsultationPrefix } from "../../lib/client/professionCopy.ts";
+import {
+  bookingPrimaryIsExternal,
+  resolvedBookingPrimaryHref,
+  SITE_BOOKING_PRIMARY_LABEL,
+} from "../../lib/client/siteBooking";
+import { SITE_BOOKING_SECONDARY_HREF, SITE_BOOKING_SECONDARY_LABEL } from "../../lib/constants";
+
+const copy = await getSiteCopy("accueil");
+const introText = copy.data.chapo?.trim() ?? "";
+const introTextSecondary = copy.data.introduction?.trim() ?? "";
+
+/** Préfixe du sous-titre ; le reste dépend de `practice` (public, modes). */
+const heroConsultPrefix = professionHeroConsultationPrefix(client.profession);
+const heroConsultTagline = `${heroConsultPrefix}${heroConsultationTaglineAfterPour(client.practice)}`;
+const heroEyebrow = heroEyebrowTagline(client);
+const bookingHref = resolvedBookingPrimaryHref(client);
+const bookingExternal = bookingPrimaryIsExternal(bookingHref);
+---
+
+<div data-component="HeroSection">
+  <div class="space-y-3">
+    {heroEyebrow && <p class="text-sm md:text-base">{heroEyebrow}</p>}
+    <h1>
+      {client.business.title} à {client.business.city}
+    </h1>
+    <p class="max-w-3xl text-lg">{heroConsultTagline}</p>
+  </div>
+  <div class="space-y-8 py-5">
+    <div class="max-w-3xl space-y-5">
+      {introText && <p>{introText}</p>}
+      {introTextSecondary && <p>{introTextSecondary}</p>}
+    </div>
+
+    <div class="flex flex-wrap items-center gap-3">
+      <a
+        href={bookingHref}
+        class="cta-primary cta-primary--sm"
+        {...bookingExternal ? { target: "_blank", rel: "noopener noreferrer" } : {}}
+      >
+        <CalendarDays class="size-4 shrink-0" size={16} aria-hidden="true" />
+        {SITE_BOOKING_PRIMARY_LABEL}
+      </a>
+      <a href={SITE_BOOKING_SECONDARY_HREF} class="cta-secondary cta-secondary--sm">
+        <MessagesSquare class="size-4 shrink-0" size={16} aria-hidden="true" />
+        {SITE_BOOKING_SECONDARY_LABEL}
+      </a>
+    </div>
+  </div>
+</div>

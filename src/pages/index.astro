@@ -1,0 +1,9 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { client } from "../lib/client";
+import HomePage from "../components/HomePage.astro";
+---
+
+<BaseLayout title={client.seo.siteName} description={client.seo.description}>
+  <HomePage />
+</BaseLayout>

@@ -1,0 +1,20 @@
+---
+export const pageNav = {
+  navLabel: "Tarifs",
+  navOrder: 10,
+};
+
+import StandardPageLayout from "../layouts/StandardPageLayout.astro";
+import TarifsPageContent from "../components/pages/TarifsPageContent.astro";
+import { SITE_BOOKING_SECONDARY_HREF, SITE_BOOKING_SECONDARY_LABEL } from "../lib/constants";
+---
+
+<StandardPageLayout
+  title="Tarifs"
+  description="Les tarifs sont indiqués à titre informatif. N'hésitez pas à me contacter si besoin."
+>
+  <a slot="actions" href={SITE_BOOKING_SECONDARY_HREF} class="cta-primary">
+    {SITE_BOOKING_SECONDARY_LABEL}
+  </a>
+  <TarifsPageContent />
+</StandardPageLayout>

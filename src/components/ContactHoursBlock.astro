@@ -1,0 +1,24 @@
+---
+import { enabledContactHoursRows } from "../lib/client/contactHours";
+import { client } from "../lib/client";
+
+const hoursRows = enabledContactHoursRows(client.contact.hours);
+---
+
+{
+  hoursRows.length > 0 && (
+    <div data-component="contact.hours-block">
+      <h2>Horaires</h2>
+      <table>
+        <tbody>
+          {hoursRows.map((row) => (
+            <tr>
+              <th scope="row">{row.label}</th>
+              <td>{row.value}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}

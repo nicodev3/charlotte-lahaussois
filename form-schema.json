@@ -1,0 +1,509 @@
+{
+  "version": 1,
+  "title": "Questionnaire site praticien",
+  "description": "Ce formulaire rassemble les informations necessaires pour generer le contenu du site.",
+  "sections": [
+    {
+      "title": "Identite professionnelle",
+      "description": "Informations principales affichees sur le site.",
+      "fields": [
+        {
+          "id": "profession",
+          "label": "Profession",
+          "type": "singleChoice",
+          "required": true,
+          "options": [
+            {
+              "label": "Psychologue",
+              "value": "psychologue"
+            },
+            {
+              "label": "Psychomotricien(ne)",
+              "value": "psychomotricien"
+            }
+          ]
+        },
+        {
+          "id": "business.fullName",
+          "label": "Nom complet",
+          "type": "shortText",
+          "required": true
+        },
+        {
+          "id": "business.title",
+          "label": "Titre professionnel affiché",
+          "type": "checkboxes",
+          "required": true,
+          "options": [
+            {
+              "label": "Psychologue",
+              "value": "Psychologue"
+            },
+            {
+              "label": "Psychologue clinicien",
+              "value": "Psychologue clinicien"
+            },
+            {
+              "label": "Psychologue du travail",
+              "value": "Psychologue du travail"
+            },
+            {
+              "label": "Psychomotricien",
+              "value": "Psychomotricien"
+            },
+            {
+              "label": "Autre",
+              "value": "Autre"
+            }
+          ]
+        },
+        {
+          "id": "business.titleOther",
+          "label": "Autre titre professionnel",
+          "type": "shortText",
+          "required": false
+        },
+        {
+          "id": "business.city",
+          "label": "Ville",
+          "type": "shortText",
+          "required": true
+        },
+        {
+          "id": "business.addressLine1",
+          "label": "Adresse du cabinet",
+          "type": "shortText",
+          "required": true
+        },
+        {
+          "id": "business.postalCode",
+          "label": "Code postal",
+          "type": "shortText",
+          "required": true
+        },
+        {
+          "id": "business.phone",
+          "label": "Telephone",
+          "type": "shortText",
+          "required": true
+        },
+        {
+          "id": "business.email",
+          "label": "E-mail professionnel",
+          "type": "shortText",
+          "required": true
+        },
+        {
+          "id": "business.siret",
+          "label": "Numero SIRET",
+          "type": "shortText",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "Pratique",
+      "fields": [
+        {
+          "id": "practice.audience",
+          "label": "Public accompagne",
+          "type": "checkboxes",
+          "required": true,
+          "options": [
+            {
+              "label": "Enfants",
+              "value": "enfants"
+            },
+            {
+              "label": "Adolescents",
+              "value": "adolescents"
+            },
+            {
+              "label": "Adultes",
+              "value": "adultes"
+            },
+            {
+              "label": "Couples",
+              "value": "couples"
+            },
+            {
+              "label": "Autre",
+              "value": "autre"
+            }
+          ]
+        },
+        {
+          "id": "practice.audienceOther",
+          "label": "Si autre public, precisez",
+          "type": "shortText",
+          "required": false
+        },
+        {
+          "id": "practice.specialties",
+          "label": "Specialites ou motifs frequents (une ligne par entree)",
+          "type": "longText",
+          "required": false,
+          "format": "lines"
+        },
+        {
+          "id": "practicePageEnabledSelection",
+          "label": "Approches principales a afficher",
+          "type": "checkboxes",
+          "required": false,
+          "maxSelected": 6,
+          "helpText": "Selectionnez jusqu'a 6 approches. Elles serviront a activer les pages pratiques du site.",
+          "options": [
+            {
+              "label": "Thérapies TCC",
+              "value": "tcc"
+            },
+            {
+              "label": "Thérapie ACT",
+              "value": "act"
+            },
+            {
+              "label": "Thérapie des schémas",
+              "value": "schemaTherapy"
+            },
+            {
+              "label": "Thérapie DBT",
+              "value": "dbt"
+            },
+            {
+              "label": "MBCT",
+              "value": "mbct"
+            },
+            {
+              "label": "Thérapie rationnelle émotive (REBT)",
+              "value": "rebt"
+            },
+            {
+              "label": "Thérapie par exposition",
+              "value": "exposureTherapy"
+            },
+            {
+              "label": "Psychothérapie psychodynamique",
+              "value": "psychodynamic"
+            },
+            {
+              "label": "Psychanalyse",
+              "value": "psychoanalytic"
+            },
+            {
+              "label": "Approche centrée sur la personne",
+              "value": "personCentered"
+            },
+            {
+              "label": "Gestalt-thérapie",
+              "value": "gestalt"
+            },
+            {
+              "label": "Thérapie existentielle",
+              "value": "existential"
+            },
+            {
+              "label": "Thérapie systémique",
+              "value": "systemicFamily"
+            },
+            {
+              "label": "Thérapie de couple",
+              "value": "coupleTherapy"
+            },
+            {
+              "label": "Thérapie brève",
+              "value": "briefTherapy"
+            },
+            {
+              "label": "Thérapie centrée sur les solutions",
+              "value": "solutionFocused"
+            },
+            {
+              "label": "Thérapie narrative",
+              "value": "narrativeTherapy"
+            },
+            {
+              "label": "Thérapie stratégique",
+              "value": "strategicTherapy"
+            },
+            {
+              "label": "Approche intégrative",
+              "value": "integrative"
+            },
+            {
+              "label": "Thérapie interpersonnelle (TIP)",
+              "value": "ipt"
+            },
+            {
+              "label": "Thérapie focalisée sur les émotions (EFT)",
+              "value": "eft"
+            },
+            {
+              "label": "EMDR",
+              "value": "emdr"
+            },
+            {
+              "label": "Hypnothérapie",
+              "value": "clinicalHypnosis"
+            },
+            {
+              "label": "Pleine conscience (MBSR)",
+              "value": "mindfulnessMbsr"
+            },
+            {
+              "label": "Thérapie sexuelle",
+              "value": "sexTherapy"
+            },
+            {
+              "label": "Thérapie par le jeu",
+              "value": "playTherapy"
+            },
+            {
+              "label": "Art-thérapie",
+              "value": "artTherapy"
+            },
+            {
+              "label": "Champ d'argile",
+              "value": "clayField"
+            },
+            {
+              "label": "Entretien motivationnel",
+              "value": "motivationalInterviewing"
+            }
+          ]
+        },
+        {
+          "id": "practiceOfferCustomApproaches.integrativeTechniques",
+          "label": "Autre approche ou precision (une ligne par entree)",
+          "type": "longText",
+          "required": false,
+          "format": "lines"
+        },
+        {
+          "id": "practice.languages",
+          "label": "Langues parlees (une ligne par entree)",
+          "type": "longText",
+          "required": false,
+          "format": "lines"
+        },
+        {
+          "id": "practice.consultationModes",
+          "label": "Modes de consultation",
+          "type": "checkboxes",
+          "required": true,
+          "options": [
+            {
+              "label": "Au cabinet",
+              "value": "cabinet"
+            },
+            {
+              "label": "En visio",
+              "value": "visio"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Diplomes et inscriptions",
+      "fields": [
+        {
+          "id": "credentials.license.registrationLabel",
+          "label": "Type d'inscription",
+          "type": "singleChoice",
+          "required": true,
+          "options": [
+            {
+              "label": "ADELI",
+              "value": "adeli"
+            },
+            {
+              "label": "RPPS",
+              "value": "rpps"
+            }
+          ]
+        },
+        {
+          "id": "credentials.license.rppsOrAdeli",
+          "label": "Numero ADELI ou RPPS",
+          "type": "shortText",
+          "required": true
+        },
+        {
+          "id": "credentials.degrees",
+          "label": "Diplomes (une ligne par diplome)",
+          "type": "longText",
+          "required": false,
+          "format": "credentialLines"
+        },
+        {
+          "id": "credentials.trainings",
+          "label": "Formations continues (une ligne par formation)",
+          "type": "longText",
+          "required": false,
+          "format": "credentialLines"
+        },
+        {
+          "id": "credentials.affiliations",
+          "label": "Affiliations professionnelles (une ligne par entree)",
+          "type": "longText",
+          "required": false,
+          "format": "lines"
+        },
+        {
+          "id": "credentials.experienceYears",
+          "label": "Annees d'experience",
+          "type": "number",
+          "required": false
+        }
+      ]
+    },
+    {
+      "title": "Rendez-vous, contact et acces",
+      "fields": [
+        {
+          "id": "contact.hours.monday.value",
+          "label": "Horaires lundi",
+          "type": "shortText",
+          "required": false
+        },
+        {
+          "id": "contact.hours.tuesday.value",
+          "label": "Horaires mardi",
+          "type": "shortText",
+          "required": false
+        },
+        {
+          "id": "contact.hours.wednesday.value",
+          "label": "Horaires mercredi",
+          "type": "shortText",
+          "required": false
+        },
+        {
+          "id": "contact.hours.thursday.value",
+          "label": "Horaires jeudi",
+          "type": "shortText",
+          "required": false
+        },
+        {
+          "id": "contact.hours.friday.value",
+          "label": "Horaires vendredi",
+          "type": "shortText",
+          "required": false
+        },
+        {
+          "id": "contact.hours.saturday.value",
+          "label": "Horaires samedi",
+          "type": "shortText",
+          "required": false
+        },
+        {
+          "id": "contact.hours.sunday.value",
+          "label": "Horaires dimanche",
+          "type": "shortText",
+          "required": false
+        }
+      ]
+    },
+    {
+      "title": "Tarifs",
+      "fields": [
+        {
+          "id": "pricing.items.0.name",
+          "label": "Prestation 1 - nom",
+          "type": "shortText",
+          "required": true
+        },
+        {
+          "id": "pricing.items.0.price",
+          "label": "Prestation 1 - prix en euros",
+          "type": "number",
+          "required": true
+        },
+        {
+          "id": "pricing.items.0.durationMinutes",
+          "label": "Prestation 1 - durée en minutes",
+          "type": "number",
+          "required": true
+        },
+        {
+          "id": "pricing.items.0.note",
+          "label": "Prestation 1 - précision optionnelle",
+          "type": "shortText",
+          "required": false
+        },
+        {
+          "id": "pricing.items.1.name",
+          "label": "Prestation 2 - nom",
+          "type": "shortText",
+          "required": false
+        },
+        {
+          "id": "pricing.items.1.price",
+          "label": "Prestation 2 - prix en euros",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "pricing.items.1.durationMinutes",
+          "label": "Prestation 2 - durée en minutes",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "pricing.items.1.note",
+          "label": "Prestation 2 - précision optionnelle",
+          "type": "shortText",
+          "required": false
+        },
+        {
+          "id": "pricing.items.2.name",
+          "label": "Prestation 3 - nom",
+          "type": "shortText",
+          "required": false
+        },
+        {
+          "id": "pricing.items.2.price",
+          "label": "Prestation 3 - prix en euros",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "pricing.items.2.durationMinutes",
+          "label": "Prestation 3 - durée en minutes",
+          "type": "number",
+          "required": false
+        },
+        {
+          "id": "pricing.items.2.note",
+          "label": "Prestation 3 - précision optionnelle",
+          "type": "shortText",
+          "required": false
+        },
+        {
+          "id": "pricing.payment",
+          "label": "Moyens de paiement acceptes",
+          "type": "checkboxes",
+          "required": false,
+          "options": [
+            {
+              "label": "CB",
+              "value": "CB"
+            },
+            {
+              "label": "Virement",
+              "value": "Virement"
+            },
+            {
+              "label": "Cheque",
+              "value": "Cheque"
+            },
+            {
+              "label": "Especes",
+              "value": "Especes"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

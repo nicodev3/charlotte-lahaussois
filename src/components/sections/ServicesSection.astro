@@ -1,0 +1,31 @@
+---
+import { client } from "../../lib/client";
+
+interface Props {
+  /** Page listant le détail des motifs. */
+  detailsPageHref?: string;
+}
+
+const { detailsPageHref = "/pourquoi-consulter/" } = Astro.props;
+const specialtyLabels = client.practice.specialties;
+---
+
+<section class="space-y-10" data-component="section.services">
+  <h2>Motifs de consultation</h2>
+  {
+    specialtyLabels.length > 0 && (
+      <>
+        <ul class="flex flex-wrap gap-3">
+          {specialtyLabels.map((label) => (
+            <li class="px-4 py-2 text-sm leading-tight">{label}</li>
+          ))}
+        </ul>
+        <div class="pt-3">
+          <a href={detailsPageHref} class="cta-secondary cta-secondary--sm">
+            Pourquoi consulter ? — Voir tous les motifs
+          </a>
+        </div>
+      </>
+    )
+  }
+</section>

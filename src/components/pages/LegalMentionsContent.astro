@@ -1,0 +1,47 @@
+---
+import { client } from "../../lib/client";
+import { businessAddressText } from "../../lib/client/businessAddress";
+import {
+  LEGAL_HOSTING_ADDRESS,
+  LEGAL_HOSTING_NAME,
+  LEGAL_NO_TRACKING_NOTICE,
+} from "../../lib/constants";
+
+const b = client.business;
+const license = client.credentials.license;
+const regLabel = license.registrationLabel === "rpps" ? "RPPS" : "ADELI";
+---
+
+<section class="page-block" data-component="legal.editor">
+  <h2>Éditeur du site</h2>
+  <p>{b.fullName} — {b.title}</p>
+  <p>Adresse : {businessAddressText(b)}</p>
+  <p>Email : {b.email}</p>
+  {b.siret && <p>SIRET : {b.siret}</p>}
+  {
+    license.rppsOrAdeli && (
+      <p>
+        {regLabel} : {license.rppsOrAdeli}
+      </p>
+    )
+  }
+</section>
+
+<section class="page-block" data-component="legal.hosting">
+  <h2>Hébergement</h2>
+  <p>{LEGAL_HOSTING_NAME}</p>
+  <p>{LEGAL_HOSTING_ADDRESS}</p>
+</section>
+
+<section id="donnees-personnelles" class="page-block" data-component="legal.privacy">
+  <h2>Données personnelles</h2>
+  <p>
+    Les informations transmises via email ou prise de rendez-vous sont utilisées uniquement pour
+    répondre à votre demande. Pour toute question : <a href={`mailto:${b.email}`}>{b.email}</a>.
+  </p>
+</section>
+
+<section class="page-block" data-component="legal.cookies">
+  <h2>Cookies / traceurs</h2>
+  <p>{LEGAL_NO_TRACKING_NOTICE}</p>
+</section>

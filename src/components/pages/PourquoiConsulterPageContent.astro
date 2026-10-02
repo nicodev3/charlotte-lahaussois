@@ -1,0 +1,19 @@
+---
+import { client } from "../../lib/client";
+import { getSpecialtyMotifSummary } from "../../lib/client/specialtyMotifSummaries.ts";
+
+const specialtyLabels = client.practice.specialties;
+---
+
+<section class="page-block" data-component="motifs.list">
+  <ul>
+    {
+      specialtyLabels.map((label) => (
+        <li data-component="motifs.item">
+          <p class="font-medium">{label}</p>
+          <p>{getSpecialtyMotifSummary(label)}</p>
+        </li>
+      ))
+    }
+  </ul>
+</section>

@@ -1,0 +1,33 @@
+---
+import { client } from "../lib/client";
+import { professionSupportsMonSoutienPsy } from "../lib/client/professionCopy.ts";
+
+interface Props {
+  class?: string;
+  headingLevel?: 2 | 3 | 4;
+}
+
+const { class: className, headingLevel = 3 } = Astro.props;
+const msp = client.practice.reimbursement.monSoutienPsy;
+const showMsp = professionSupportsMonSoutienPsy(client.profession) && msp.enabled;
+const HeadingTag = `h${headingLevel}` as "h2" | "h3" | "h4";
+---
+
+{
+  showMsp && (
+    <section
+      class:list={["page-block", className]}
+      data-component="MonSoutienPsyCallout"
+      aria-label="Dispositif Mon soutien psy"
+    >
+      <p class="note">Dispositif de prise en charge</p>
+      <HeadingTag>Mon soutien psy</HeadingTag>
+      <p>
+        <strong>Mon Soutien Psy</strong> permet aux patients d’obtenir un accompagnement
+        psychologique pris en charge, sous conditions, grâce à une prescription médicale. Ce
+        dispositif vise à rendre la psychothérapie plus accessible financièrement.
+      </p>
+      <p>{msp.note.trim()}</p>
+    </section>
+  )
+}

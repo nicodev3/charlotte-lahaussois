@@ -1,0 +1,17 @@
+---
+export const pageNav = {
+  navLabel: "Pourquoi consulter ?",
+  navOrder: 25,
+};
+
+import StandardPageLayout from "../layouts/StandardPageLayout.astro";
+import PourquoiConsulterPageContent from "../components/pages/PourquoiConsulterPageContent.astro";
+---
+
+<StandardPageLayout
+  title="Pourquoi consulter ?"
+  description="Découvrez les principaux motifs de consultation et l'accompagnement proposé selon votre situation."
+  intro="Vous trouverez ici les principaux motifs de consultation avec un aperçu de l'accompagnement possible."
+>
+  <PourquoiConsulterPageContent />
+</StandardPageLayout>

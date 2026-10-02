@@ -1,0 +1,53 @@
+{
+  "name": "nicodev-template",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "validate:client": "node --experimental-strip-types scripts/validate-client.mjs",
+    "import:client": "node --experimental-strip-types scripts/import-client.mjs",
+    "form:google:script": "node scripts/generate-google-form-apps-script.mjs",
+    "import:google-form": "node --experimental-strip-types scripts/import-google-form-csv.mjs",
+    "check:bom": "node scripts/check-bom.mjs",
+    "check:contrast": "node scripts/check-contrast.mjs",
+    "audit:repos": "powershell -ExecutionPolicy Bypass -File scripts/audit-client-repos.ps1",
+    "gen:practice-pages": "node --experimental-strip-types scripts/gen-practice-pages.mjs",
+    "new:page": "powershell -ExecutionPolicy Bypass -File scripts/new-content-page.ps1",
+    "delete:page": "node scripts/delete-content-page.mjs",
+    "cms": "decap-server",
+    "dev:cms": "concurrently -n astro,cms -c cyan,magenta \"npm run dev\" \"npm run cms\"",
+    "check": "astro check",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "build": "npm run validate:client && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@lucide/astro": "^1.7.0",
+    "@tailwindcss/vite": "^4.2.1",
+    "astro": "^7.3.5",
+    "leaflet": "^1.9.4",
+    "tailwindcss": "^4.2.1",
+    "zod": "^4.0.0"
+  },
+  "overrides": {
+    "@lucide/astro": {
+      "astro": "$astro"
+    }
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@types/leaflet": "^1.9.22",
+    "@types/node": "^22.20.1",
+    "concurrently": "^10.0.5",
+    "decap-server": "^3.11.0",
+    "prettier": "^3.9.6",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^6.0.3"
+  }
+}

@@ -1,0 +1,51 @@
+---
+import { CalendarDays, Phone } from "@lucide/astro";
+import { client } from "../lib/client";
+import { businessStreetLines } from "../lib/client/businessAddress";
+import {
+  bookingPrimaryIsExternal,
+  resolvedBookingPrimaryHref,
+  SITE_BOOKING_PRIMARY_LABEL,
+} from "../lib/client/siteBooking";
+
+const b = client.business;
+const bookingHref = resolvedBookingPrimaryHref(client);
+const bookingIsExternal = bookingPrimaryIsExternal(bookingHref);
+
+const street = businessStreetLines(b).join(", ");
+const postalCity = `${b.postalCode} ${b.city}`;
+---
+
+<section
+  data-component="ui.header-bar"
+  aria-label="Adresse du cabinet, contact et prise de rendez-vous"
+>
+  <div
+    class="site-container flex flex-col gap-3 py-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-2"
+  >
+    <p class="min-w-0 pb-2 text-sm leading-snug sm:flex-1 sm:pb-0">
+      <span class="flex flex-col gap-0.5 sm:hidden">
+        <span>{street}</span>
+        <span>{postalCity}</span>
+      </span>
+      <span class="hidden sm:inline">{street} · {postalCity}</span>
+    </p>
+    <div class="flex min-h-11 flex-row items-center gap-3 sm:contents">
+      <a
+        class="inline-flex min-h-11 min-w-0 flex-1 items-center gap-2 px-1 text-sm leading-snug sm:min-h-0 sm:flex-none sm:gap-1.5 sm:px-0"
+        href={`tel:${b.phone.replace(/\s/g, "")}`}
+      >
+        <Phone class="size-4 shrink-0" size={16} aria-hidden="true" />
+        <span class="truncate">{b.phone}</span>
+      </a>
+      <a
+        class="cta-primary cta-primary--sm min-h-11 shrink-0 self-center max-sm:ml-auto sm:min-h-0 sm:self-auto"
+        href={bookingHref}
+        {...bookingIsExternal ? { target: "_blank", rel: "noopener noreferrer" } : {}}
+      >
+        <CalendarDays class="size-4 shrink-0" size={16} aria-hidden="true" />
+        {SITE_BOOKING_PRIMARY_LABEL}
+      </a>
+    </div>
+  </div>
+</section>

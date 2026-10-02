@@ -1,0 +1,78 @@
+---
+import "../styles/global.css";
+import "../styles/stitch.css";
+import { Font } from "astro:assets";
+import { PUBLIC_NOINDEX } from "astro:env/client";
+import { siteFonts } from "../design/fonts.mjs";
+import { client } from "../lib/client";
+import { resolvedFaqEntries } from "../lib/client/faqPresets.ts";
+import { professionMainEntityJsonLdType } from "../lib/client/professionCopy.ts";
+import { businessStreetLines } from "../lib/client/businessAddress";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = client.seo.siteName, description = client.seo.description } = Astro.props;
+
+const pageUrl = new URL(Astro.url.pathname, Astro.site);
+const mainEntityLdType = professionMainEntityJsonLdType(client.profession);
+const fontVariables = (siteFonts ?? []).map((font) => font.cssVariable);
+
+const mainEntityJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": mainEntityLdType,
+  name: client.business.fullName,
+  ...(mainEntityLdType === "Person" ? { jobTitle: client.business.title } : {}),
+  description: client.seo.description,
+  url: Astro.site,
+  telephone: client.business.phone,
+  email: client.business.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: businessStreetLines(client.business).join(", "),
+    postalCode: client.business.postalCode,
+    addressLocality: client.business.city,
+    addressCountry: "FR",
+  },
+});
+
+const faqPageJsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: resolvedFaqEntries(client.profession).map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  })),
+});
+---
+
+<html lang="fr" data-component="layout.base">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {PUBLIC_NOINDEX && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={pageUrl} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:site_name" content={client.seo.siteName} />
+    <meta property="og:image" content={client.seo.ogImage} />
+    {fontVariables.map((cssVariable) => <Font cssVariable={cssVariable as never} preload />)}
+    <script is:inline type="application/ld+json" set:html={mainEntityJsonLd} />
+    <script is:inline type="application/ld+json" set:html={faqPageJsonLd} />
+  </head>
+
+  <body class="min-h-screen">
+    <slot />
+    <Footer />
+  </body>
+</html>

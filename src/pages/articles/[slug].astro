@@ -1,0 +1,23 @@
+---
+import { getCollection, render } from "astro:content";
+import StandardPageLayout from "../../layouts/StandardPageLayout.astro";
+import { getPageSlug } from "../../lib/pageRoutes";
+import { isPublishedEntry } from "../../lib/contentNavigation";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("pages", isPublishedEntry);
+  return entries.map((entry) => ({
+    params: { slug: getPageSlug(entry.id) },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<StandardPageLayout title={entry.data.title} description={entry.data.description ?? ""}>
+  <article class="content-rich" data-component="content.article">
+    <Content />
+  </article>
+</StandardPageLayout>

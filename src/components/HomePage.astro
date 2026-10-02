@@ -1,0 +1,20 @@
+---
+import Header from "./Header.astro";
+import HeroSection from "./sections/HeroSection.astro";
+import ServicesSection from "./sections/ServicesSection.astro";
+import FaqSection from "./FaqSection.astro";
+import MonSoutienPsyCallout from "./MonSoutienPsyCallout.astro";
+---
+
+<Header />
+
+<main class="site-container" data-component="home-page">
+  <section class="section-spacing" data-component="section.hero">
+    <HeroSection />
+  </section>
+  <section class="section-spacing" data-component="section.services-wrapper">
+    <ServicesSection />
+  </section>
+  <MonSoutienPsyCallout class="my-10" headingLevel={2} />
+  <FaqSection class="my-10" />
+</main>

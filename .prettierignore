@@ -1,0 +1,14 @@
+# Sorties et dépendances
+dist/
+.astro/
+node_modules/
+package-lock.json
+generated/
+exports/
+
+# Fichiers propres à chaque site client (évite les conflits lors des synchros template → client)
+src/data/client.json
+src/content/
+
+# Scripts Windows (CRLF, voir .editorconfig)
+*.ps1

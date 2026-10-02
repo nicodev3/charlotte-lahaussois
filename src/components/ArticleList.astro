@@ -1,0 +1,24 @@
+---
+import { getArticleNavigation } from "../lib/contentNavigation";
+
+const articles = await getArticleNavigation();
+---
+
+<section data-component="content.article-list">
+  {
+    articles.length > 0 ? (
+      <ul>
+        {articles.map((article) => (
+          <li>
+            <a href={article.href}>
+              <p class="font-medium">{article.title}</p>
+              {article.description && <p class="note">{article.description}</p>}
+            </a>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p>Aucun article publié pour le moment.</p>
+    )
+  }
+</section>

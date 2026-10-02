@@ -1,0 +1,17 @@
+---
+export const pageNav = {
+  navLabel: "Mentions légales",
+  navOrder: 90,
+  includeInMainNav: false,
+};
+
+import StandardPageLayout from "../layouts/StandardPageLayout.astro";
+import LegalMentionsContent from "../components/pages/LegalMentionsContent.astro";
+---
+
+<StandardPageLayout
+  title="Mentions légales"
+  description="Mentions légales et informations éditeur du site."
+>
+  <LegalMentionsContent />
+</StandardPageLayout>

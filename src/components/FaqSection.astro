@@ -1,0 +1,25 @@
+---
+import { client } from "../lib/client";
+import { resolvedFaqEntries } from "../lib/client/faqPresets.ts";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+const items = resolvedFaqEntries(client.profession);
+---
+
+<section class:list={["page-block", className]} data-component="panel.faq">
+  <h2>Questions fréquentes</h2>
+  <div>
+    {
+      items.map((item) => (
+        <details data-component="faq.item">
+          <summary>{item.question}</summary>
+          <p>{item.answer}</p>
+        </details>
+      ))
+    }
+  </div>
+</section>

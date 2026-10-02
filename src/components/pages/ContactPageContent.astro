@@ -1,0 +1,36 @@
+---
+import ContactCard from "../ContactCard.astro";
+import ContactHoursBlock from "../ContactHoursBlock.astro";
+import ContactForm from "../ContactForm.astro";
+import FaqSection from "../FaqSection.astro";
+import { enabledContactHoursRows } from "../../lib/client/contactHours";
+import { client } from "../../lib/client";
+
+const hasHours = enabledContactHoursRows(client.contact.hours).length > 0;
+const waitingListNote = client.practice.waitingListNote ?? "";
+---
+
+<section class="page-block grid items-start gap-6 md:grid-cols-2" data-component="contact.info">
+  <ContactCard stacked />
+
+  {
+    hasHours && (
+      <div data-component="contact.hours">
+        <ContactHoursBlock />
+        {waitingListNote && <p class="mt-4">{waitingListNote}</p>}
+      </div>
+    )
+  }
+</section>
+
+{
+  waitingListNote && !hasHours && (
+    <section class="page-block" data-component="contact.waiting">
+      <p>{waitingListNote}</p>
+    </section>
+  )
+}
+
+{client.contact.channels.selected.includes("form") && <ContactForm />}
+
+<FaqSection />

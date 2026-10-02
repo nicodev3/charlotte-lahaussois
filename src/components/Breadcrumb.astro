@@ -1,0 +1,43 @@
+---
+/**
+ * Fil d’Ariane : Accueil › [section parente] › page courante.
+ * Les routes du socle ont au plus deux niveaux (`/articles/<slug>/`) ; le libellé de la page
+ * courante vient du layout, sans recharger les collections.
+ */
+interface Props {
+  currentLabel: string;
+}
+
+const { currentLabel } = Astro.props;
+const currentPath = Astro.url.pathname;
+
+const PARENT_LABELS: Record<string, string> = {
+  articles: "Articles",
+};
+
+const segments = currentPath.split("/").filter(Boolean);
+const parents = segments.slice(0, -1).map((segment, index) => ({
+  href: `/${segments.slice(0, index + 1).join("/")}/`,
+  label: PARENT_LABELS[segment] ?? segment,
+}));
+
+const crumbs = [{ href: "/", label: "Accueil" }, ...parents];
+---
+
+{
+  segments.length > 0 && (
+    <nav class="site-container py-4" aria-label="Fil d'Ariane" data-component="ui.breadcrumb">
+      <ol class="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
+        {crumbs.map((crumb) => (
+          <li class="inline-flex items-center gap-2">
+            <a href={crumb.href}>{crumb.label}</a>
+            <span aria-hidden="true">/</span>
+          </li>
+        ))}
+        <li>
+          <span aria-current="page">{currentLabel}</span>
+        </li>
+      </ol>
+    </nav>
+  )
+}

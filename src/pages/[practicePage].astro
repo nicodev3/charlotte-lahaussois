@@ -1,0 +1,40 @@
+---
+import { getCollection, render } from "astro:content";
+import StandardPageLayout from "../layouts/StandardPageLayout.astro";
+import { client } from "../lib/client";
+import { isPublishedEntry } from "../lib/contentNavigation";
+import {
+  REGISTERED_PRACTICE_PAGES,
+  practicePageContentId,
+  practicePageEntryMatchesContentId,
+} from "../lib/practicePageRegistry";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("practicePages", isPublishedEntry);
+
+  return REGISTERED_PRACTICE_PAGES.filter(
+    (page) => client.practicePageEnabled[page.id] === true,
+  ).map((page) => {
+    const contentId = practicePageContentId(page.slug);
+    const entry = entries.find((e) => practicePageEntryMatchesContentId(e.id, contentId));
+    if (!entry) {
+      throw new Error(
+        `[practicePages] Page pratique "${page.id}" activée (client.practicePageEnabled) mais fichier manquant : src/content/practice-pages/${contentId}`,
+      );
+    }
+    return {
+      params: { practicePage: page.slug },
+      props: { entry },
+    };
+  });
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<StandardPageLayout title={entry.data.title} description={entry.data.description ?? ""}>
+  <article class="content-rich" data-component="content.practice-page">
+    <Content />
+  </article>
+</StandardPageLayout>

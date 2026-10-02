@@ -1,0 +1,202 @@
+{
+    "schemaVersion": 25,
+    "profession": "psychologue",
+    "business": {
+        "fullName": "Pierre Janet",
+        "title": "Psychologue",
+        "city": "Lyon",
+        "addressLine1": "12 rue de la Paix",
+        "addressLine2": "2e étage, digicode 1234",
+        "postalCode": "69001",
+        "phone": "06 12 34 56 78",
+        "email": "claire.bernard@cabinet-psy.fr",
+        "siret": "83412567800012"
+    },
+    "social": {
+        "links": [
+            {
+                "label": "LinkedIn",
+                "href": "https://www.linkedin.com/in/exemple-psychologue"
+            }
+        ]
+    },
+    "practice": {
+        "audience": [
+            "adultes",
+            "adolescents",
+            "familles"
+        ],
+        "audienceOther": "",
+        "specialties": [],
+        "approaches": [],
+        "languages": [
+            "Français",
+            "Anglais"
+        ],
+        "consultationModes": [
+            "cabinet",
+            "visio"
+        ],
+        "waitingListNote": "Les délais varient selon la période ; contactez-moi pour connaître les disponibilités.",
+        "reimbursement": {
+            "monSoutienPsy": {
+                "enabled": false,
+                "note": "A verifier selon votre situation."
+            }
+        }
+    },
+    "credentials": {
+        "license": {
+            "rppsOrAdeli": "75 93 12345 67",
+            "registrationLabel": "adeli"
+        },
+        "degrees": [
+            {
+                "label": "Master 2 Psychologie clinique et psychopathologie",
+                "institution": "Université Lyon 2",
+                "year": "2015"
+            }
+        ],
+        "trainings": [
+            {
+                "label": "Formation EMDR niveau 1 et 2",
+                "provider": "Institut EMDR France",
+                "year": "2018"
+            }
+        ],
+        "affiliations": [
+            "Fédération Française des Psychologues et de Psychologie (FFPP)",
+            "Société Française de Psychologie (SFP)"
+        ],
+        "experienceYears": 10
+    },
+    "conditions": {
+        "cancellation": {
+            "noticeHours": 24,
+            "feePolicy": "Toute séance annulée moins de 24h avant peut être due, sauf cas de force majeure."
+        },
+        "delay": {
+            "graceMinutes": 10,
+            "note": "En cas de retard important, la séance peut être écourtée pour respecter les rendez-vous suivants."
+        },
+        "noShow": {
+            "charged": true,
+            "note": "Toute absence non signalée est considérée comme une séance due."
+        }
+    },
+    "seo": {
+        "description": "Psychologue à Lyon, Pierre Janet accompagne adultes, adolescents et familles en cabinet ou en visio, avec une écoute confidentielle et un suivi adapté à chacun.",
+        "baseUrl": "https://exemple.fr",
+        "ogImage": "https://exemple.fr/og.jpg"
+    },
+    "practicePageEnabled": {
+        "tcc": false,
+        "act": false,
+        "schemaTherapy": true,
+        "dbt": false,
+        "mbct": false,
+        "rebt": false,
+        "exposureTherapy": false,
+        "psychodynamic": false,
+        "psychoanalytic": false,
+        "personCentered": false,
+        "gestalt": false,
+        "existential": false,
+        "systemicFamily": false,
+        "coupleTherapy": false,
+        "briefTherapy": false,
+        "solutionFocused": false,
+        "narrativeTherapy": false,
+        "strategicTherapy": false,
+        "integrative": false,
+        "ipt": false,
+        "eft": false,
+        "emdr": false,
+        "clinicalHypnosis": false,
+        "mindfulnessMbsr": false,
+        "sexTherapy": false,
+        "playTherapy": false,
+        "artTherapy": false,
+        "clayField": false,
+        "motivationalInterviewing": false
+    },
+    "practiceOfferCustomApproaches": {
+        "cbtThirdWave": [],
+        "humanisticExperiential": [],
+        "psychodynamicAnalytic": [],
+        "systemicCoupleEft": [],
+        "briefNarrative": [],
+        "integrativeTechniques": [],
+        "creativeMediation": [],
+        "sexology": []
+    },
+    "aboutPage": {
+        "intro": "Psychologue clinicien passionné, je m’appelle Pierre Jeanet. Depuis plus de 10 ans, j’accompagne enfants, adolescents et adultes dans les moments clés de leur parcours. Mon approche est centrée sur l’écoute bienveillante, la confiance et des méthodes scientifiquement validées. Je veille à proposer un suivi personnalisé, adapté à vos besoins, en cabinet ou à distance. Chaque consultation est un espace d’échange, de respect et de confidentialité, pour vous aider à mieux comprendre vos difficultés, à mieux vivre avec vos émotions et à retrouver un équilibre durable.",
+        "sidebarSummary": "Psychologue à Montfaucon-les-Etoiles, j’accueille enfants, adolescents et adultes en cabinet et à distance. Approche bienveillante et méthodes validées."
+    },
+    "contact": {
+        "hours": {
+            "monday": {
+                "enabled": true,
+                "value": "9h00 - 18h00"
+            },
+            "tuesday": {
+                "enabled": true,
+                "value": "9h00 - 18h00"
+            },
+            "wednesday": {
+                "enabled": true,
+                "value": "9h00 - 13h00"
+            },
+            "thursday": {
+                "enabled": true,
+                "value": "9h00 - 18h00"
+            },
+            "friday": {
+                "enabled": true,
+                "value": "9h00 - 17h00"
+            },
+            "saturday": {
+                "enabled": true,
+                "value": "9h - 13h"
+            },
+            "sunday": {
+                "enabled": false,
+                "value": ""
+            }
+        },
+        "bookingUrl": "https://www.doctolib.fr/psychologue/lyon/exemple",
+        "accessNote": "Métro Hôtel de Ville. Ascenseur. Digicode à l’entrée du bâtiment.",
+        "channels": {
+            "selected": [
+                "form",
+                "email",
+                "phone",
+                "whatsapp",
+                "doctolib"
+            ],
+            "whatsappPhone": "06 12 34 56 78"
+        }
+    },
+    "pricing": {
+        "items": [
+            {
+                "name": "Consultation individuelle",
+                "price": 70,
+                "durationMinutes": 50,
+                "note": "Adultes / adolescents"
+            },
+            {
+                "name": "Bilan psychologique",
+                "price": 120,
+                "durationMinutes": 90
+            }
+        ],
+        "payment": [
+            "CB",
+            "Virement",
+            "Chèque"
+        ],
+        "reducedRateNote": "Un tarif adapté peut être envisagé pour les étudiants ou selon la situation."
+    }
+}
