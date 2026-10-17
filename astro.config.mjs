@@ -4,9 +4,7 @@ import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import client from "./src/data/client.json" with { type: "json" };
 import { siteFonts } from "./src/design/fonts.mjs";
-
-/** Pages techniques, jamais indexées (sitemap + robots.txt). */
-export const NON_INDEXABLE_PATHS = ["/admin/", "/client-config/"];
+import { NON_INDEXABLE_PATHS } from "./src/lib/nonIndexablePaths.mjs";
 
 // https://astro.build/config
 export default defineConfig({

@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 import { PUBLIC_NOINDEX } from "astro:env/client";
-import { NON_INDEXABLE_PATHS } from "../../astro.config.mjs";
+import { NON_INDEXABLE_PATHS } from "../lib/nonIndexablePaths.mjs";
 
 export const GET: APIRoute = ({ site }) => {
   const lines = PUBLIC_NOINDEX
