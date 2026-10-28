@@ -3,32 +3,47 @@
     "profession": "psychologue",
     "business": {
         "fullName": "Charlotte Lahaussois",
-        "title": "Psychothérapeute",
-        "city": "Lyon",
-        "addressLine1": "12 rue de la Paix",
-        "addressLine2": "2e étage, digicode 1234",
-        "postalCode": "69001",
-        "phone": "06 12 34 56 78",
-        "email": "claire.bernard@cabinet-psy.fr",
-        "siret": "83412567800012"
+        "title": "Psychologue-Psychothérapeute",
+        "city": "Versailles - Le Chesnay",
+        "addressLine1": "3 av du Maréchal de Lattre de Tassigny",
+        "addressLine2": "Centre VIA SANA Rive Droite",
+        "postalCode": "78150",
+        "phone": "0609037352",
+        "email": "charlottelahaussois@gmail.com",
+        "siret": "828 543 678 00027",
+        "siretPending": false
     },
     "social": {
         "links": [
             {
                 "label": "LinkedIn",
-                "href": "https://www.linkedin.com/in/exemple-psychologue"
+                "href": "https://linkedin.com/in/charlotte-lahaussois-a5a810187"
             }
         ]
     },
     "practice": {
         "audience": [
-            "adultes",
             "adolescents",
-            "familles"
+            "adultes",
+            "autre"
         ],
-        "audienceOther": "",
-        "specialties": [],
-        "approaches": [],
+        "audienceOther": "Entreprises",
+        "specialties": [
+            "ESPT et adaptation au stress après événement traumatique",
+            "Deuil, violences, harcèlement et troubles relationnels sévères",
+            "Troubles dépressifs et dysthymie",
+            "Difficultés relationnelles, familiales et isolement social",
+            "Souffrance au travail, épuisement professionnel et reconversion",
+            "Questionnement identitaire, estime de soi et orientation",
+            "Burn out",
+            "Troubles de l'attachement"
+        ],
+        "approaches": [
+            "Psychothérapie psychodynamique",
+            "Approche centrée sur la personne",
+            "Approche intégrative",
+            "Pleine conscience (MBSR)"
+        ],
         "languages": [
             "Français",
             "Anglais"
@@ -47,28 +62,51 @@
     },
     "credentials": {
         "license": {
-            "rppsOrAdeli": "75 93 12345 67",
-            "registrationLabel": "adeli"
+            "rppsOrAdeli": "10008963281",
+            "rppsOrAdeliPending": false,
+            "registrationLabel": "rpps"
         },
         "degrees": [
             {
-                "label": "Master 2 Psychologie clinique et psychopathologie",
-                "institution": "Université Lyon 2",
-                "year": "2015"
+                "label": "DU Attachement Master 2 Psychologie clinique et psychopathologie",
+                "institution": "Université Rouen",
+                "year": "en cours"
+            },
+            {
+                "label": "Titre de Psychologue ARS",
+                "year": "2016"
+            },
+            {
+                "label": "Psychologue intégrative",
+                "institution": "NFL",
+                "year": "2017"
+            },
+            {
+                "label": "DESS Psychologue du travail (Master 2)",
+                "institution": "Université René Descartes",
+                "year": "1997"
             }
         ],
         "trainings": [
             {
-                "label": "Formation EMDR niveau 1 et 2",
-                "provider": "Institut EMDR France",
-                "year": "2018"
+                "label": "Agrée LI ICV",
+                "provider": "Institut Double Hélice",
+                "year": "2023"
+            },
+            {
+                "label": "Théorie Polyvagale",
+                "provider": "Institut Double Hélice",
+                "year": "2021"
+            },
+            {
+                "label": "Trauma et dissociation (niveau 1)",
+                "provider": "Institut Double Hélice",
+                "year": "2020"
             }
         ],
         "affiliations": [
-            "Fédération Française des Psychologues et de Psychologie (FFPP)",
-            "Société Française de Psychologie (SFP)"
-        ],
-        "experienceYears": 10
+            "Association des thérapeute LI ICV France - LI France"
+        ]
     },
     "conditions": {
         "cancellation": {
@@ -77,7 +115,7 @@
         },
         "delay": {
             "graceMinutes": 10,
-            "note": "En cas de retard important, la séance peut être écourtée pour respecter les rendez-vous suivants."
+            "note": "En cas de retard important, la séance sera écourtée pour respecter les rendez-vous suivants."
         },
         "noShow": {
             "charged": true,
@@ -92,14 +130,14 @@
     "practicePageEnabled": {
         "tcc": false,
         "act": false,
-        "schemaTherapy": true,
+        "schemaTherapy": false,
         "dbt": false,
         "mbct": false,
         "rebt": false,
         "exposureTherapy": false,
-        "psychodynamic": false,
+        "psychodynamic": true,
         "psychoanalytic": false,
-        "personCentered": false,
+        "personCentered": true,
         "gestalt": false,
         "existential": false,
         "systemicFamily": false,
@@ -108,12 +146,12 @@
         "solutionFocused": false,
         "narrativeTherapy": false,
         "strategicTherapy": false,
-        "integrative": false,
+        "integrative": true,
         "ipt": false,
         "eft": false,
         "emdr": false,
         "clinicalHypnosis": false,
-        "mindfulnessMbsr": false,
+        "mindfulnessMbsr": true,
         "sexTherapy": false,
         "playTherapy": false,
         "artTherapy": false,
@@ -131,71 +169,63 @@
         "sexology": []
     },
     "aboutPage": {
-        "intro": "Psychologue clinicien passionné, je m’appelle Pierre Jeanet. Depuis plus de 10 ans, j’accompagne enfants, adolescents et adultes dans les moments clés de leur parcours. Mon approche est centrée sur l’écoute bienveillante, la confiance et des méthodes scientifiquement validées. Je veille à proposer un suivi personnalisé, adapté à vos besoins, en cabinet ou à distance. Chaque consultation est un espace d’échange, de respect et de confidentialité, pour vous aider à mieux comprendre vos difficultés, à mieux vivre avec vos émotions et à retrouver un équilibre durable.",
-        "sidebarSummary": "Psychologue à Montfaucon-les-Etoiles, j’accueille enfants, adolescents et adultes en cabinet et à distance. Approche bienveillante et méthodes validées."
+        "intro": "\nJe crois profondément à la liberté et la responsabilité que chacun peut se donner face à un scénario de vie initial, ou d'évènements rencontrés, de re-décider dans sa vie personnelle et professionnelle; et par la thérapie LI-ICV (Lifepan Intégration - Intégration du cycle de la vie), de reprogrammer neurologiquement les évènements vécus, faire comprendre au corps que les évènements douloureux sont passés.\n\nMa double casquette de Psychologue du travail et Psychologue-Psychothérapeute ARS me permet de vous accompagner de manière intégrative, dans un système qui vous est propre et unique.\nQuel que soient vos besoins, je suis à votre écoute et là pour vous aider sans jugement. La thérapie est un processus de découverte de soi et lors de mes séances, j'encourage la transformation par l'adoption d'une attitude positive et de nouvelles habitudes, et par un accordage entre votre esprit et votre corps. J'ai les outils et l'expériences professionnelle pour vous aider à devenir qui vous êtes.",
+        "sidebarSummary": "Psychologue - Psychothérapeute à Versailles je reçois des adultes et grands adolescents ( à partir du lycée) à mon cabinet et/ou en visio, pour des problématiques personnelles et/ou professionnelles."
     },
     "contact": {
         "hours": {
             "monday": {
                 "enabled": true,
-                "value": "9h00 - 18h00"
+                "value": "VISIO uniquement: 9h00 - 18h00"
             },
             "tuesday": {
                 "enabled": true,
-                "value": "9h00 - 18h00"
+                "value": "9h00 - 19h00"
             },
             "wednesday": {
                 "enabled": true,
-                "value": "9h00 - 13h00"
+                "value": "9h00 - 19h00"
             },
             "thursday": {
                 "enabled": true,
-                "value": "9h00 - 18h00"
+                "value": "9h00 - 19h00"
             },
             "friday": {
                 "enabled": true,
-                "value": "9h00 - 17h00"
+                "value": "VISIO uniquement: 9h00 - 17h00"
             },
             "saturday": {
                 "enabled": true,
-                "value": "9h - 13h"
+                "value": "VISIO uniquement: 9h - 13h"
             },
             "sunday": {
                 "enabled": false,
                 "value": ""
             }
         },
-        "bookingUrl": "https://www.doctolib.fr/psychologue/lyon/exemple",
-        "accessNote": "Métro Hôtel de Ville. Ascenseur. Digicode à l’entrée du bâtiment.",
+        "accessNote": "Arrêt de bus \"de Bange\" Lignes 6201/6203/6205",
         "channels": {
             "selected": [
-                "form",
                 "email",
-                "phone",
                 "whatsapp",
-                "doctolib"
-            ],
-            "whatsappPhone": "06 12 34 56 78"
+                "phone"
+            ]
         }
     },
     "pricing": {
         "items": [
             {
                 "name": "Consultation individuelle",
-                "price": 70,
+                "price": 90,
                 "durationMinutes": 50,
                 "note": "Adultes / adolescents"
-            },
-            {
-                "name": "Bilan psychologique",
-                "price": 120,
-                "durationMinutes": 90
             }
         ],
         "payment": [
-            "CB",
             "Virement",
-            "Chèque"
+            "Chèque",
+            "Espèces",
+            "Wero"
         ],
         "reducedRateNote": "Un tarif adapté peut être envisagé pour les étudiants ou selon la situation."
     }
