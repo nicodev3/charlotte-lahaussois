@@ -13,19 +13,19 @@ const c = client.conditions;
 
   <div class="grid gap-6 sm:grid-cols-2">
     <div data-component="conditions.cancellation">
-      <p class="font-medium">Annulation</p>
+      <h3>Annulation</h3>
       <p class="note">Délai : {c.cancellation.noticeHours}h</p>
       <p class="note">{c.cancellation.feePolicy}</p>
     </div>
 
     <div data-component="conditions.delay">
-      <p class="font-medium">Retard</p>
+      <h3>Retard</h3>
       <p class="note">Tolérance : {c.delay.graceMinutes} min</p>
       <p class="note">{c.delay.note}</p>
     </div>
 
     <div data-component="conditions.no-show">
-      <p class="font-medium">Absence non signalée</p>
+      <h3>Absence non signalée</h3>
       <p class="note">{c.noShow.charged ? "Séance due" : "Non facturée"}</p>
       <p class="note">{c.noShow.note}</p>
     </div>

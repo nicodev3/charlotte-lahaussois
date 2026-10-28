@@ -1,6 +1,7 @@
 ---
 import { client } from "../lib/client";
 import { resolvedFaqEntries } from "../lib/client/faqPresets.ts";
+import { ChevronDown } from "@lucide/astro";
 
 interface Props {
   class?: string;
@@ -10,13 +11,16 @@ const { class: className } = Astro.props;
 const items = resolvedFaqEntries(client.profession, client.contact.bookingUrl);
 ---
 
-<section class:list={["page-block", className]} data-component="panel.faq">
-  <h2>Questions fréquentes</h2>
-  <div>
+<section class:list={["interior-faq", className]} data-component="panel.faq">
+  <div><h2>Questions fréquentes</h2><p>Quelques repères avant de nous rencontrer.</p></div>
+  <div class="home-faq-list">
     {
       items.map((item) => (
         <details data-component="faq.item">
-          <summary>{item.question}</summary>
+          <summary>
+            {item.question}
+            <ChevronDown size={19} aria-hidden="true" />
+          </summary>
           <p>{item.answer}</p>
         </details>
       ))

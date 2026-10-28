@@ -2,20 +2,74 @@
 import CredentialsPanel from "../CredentialsPanel.astro";
 import PractitionerPortrait from "../PractitionerPortrait.astro";
 import { client } from "../../lib/client";
+import { ArrowRight } from "@lucide/astro";
+import { getSiteNavigation } from "../../lib/siteNavigation";
 
 const sidebarSummary = client.aboutPage.sidebarSummary ?? "";
+const paragraphs = client.aboutPage.intro
+  .split(/\n\s*\n/)
+  .map((p) => p.trim())
+  .filter(Boolean);
+const { practices } = await getSiteNavigation();
+const hasPortrait = Object.keys(import.meta.glob("../../assets/photos/portrait.webp")).length > 0;
 ---
 
-<header
-  class="page-block flex flex-col gap-6 md:flex-row md:items-start"
-  data-component="about.intro"
->
-  <PractitionerPortrait class="mx-auto w-full max-w-xs shrink-0 md:mx-0 md:max-w-sm" />
-  <div class="min-w-0 flex-1 space-y-2">
+<header class="about-intro" data-component="about.intro">
+  <div class="about-identity">
     <h1>{client.business.fullName}</h1>
-    {sidebarSummary && <p class="note">{sidebarSummary}</p>}
-    <p class="lead">{client.aboutPage.intro}</p>
+    <p class="about-role">Psychologue du travail<br />& psychologue-psychothérapeute</p>
+    <a class="home-text-link" href="#parcours"
+      >Découvrir mon parcours <ArrowRight size={18} aria-hidden="true" /></a
+    >
   </div>
+  {
+    hasPortrait ? (
+      <PractitionerPortrait class="about-portrait" />
+    ) : (
+      <div class="about-summary">
+        <h2>Un accompagnement qui vous ressemble.</h2>
+        {sidebarSummary && <p>{sidebarSummary}</p>}
+        <p class="about-registration">
+          {client.credentials.license.registrationLabel === "rpps" ? "RPPS" : "ADELI"} :{" "}
+          {client.credentials.license.rppsOrAdeli}
+        </p>
+      </div>
+    )
+  }
 </header>
 
-<CredentialsPanel />
+<section class="interior-editorial about-story" aria-labelledby="about-story-title">
+  <div>
+    <h2 id="about-story-title">Chaque parcours<br />est singulier.</h2><p>
+      Ma pratique et mon approche
+    </p>
+  </div>
+  <div class="interior-prose">{paragraphs.map((paragraph) => <p>{paragraph}</p>)}</div>
+</section>
+
+<div id="parcours"><CredentialsPanel /></div>
+
+{
+  practices.length > 0 && (
+    <section class="about-practices" aria-labelledby="about-practices-title">
+      <>
+        <div>
+          <>
+            <h2 id="about-practices-title">Les approches qui nourrissent ma pratique.</h2>
+            <p>Un accompagnement intégratif, attentif à votre histoire.</p>
+          </>
+        </div>
+        <ul>
+          {practices.map((practice) => (
+            <li>
+              <a href={practice.href}>
+                {practice.label}
+                <ArrowRight size={20} aria-hidden="true" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </>
+    </section>
+  )
+}

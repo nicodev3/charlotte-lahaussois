@@ -1,0 +1,32 @@
+---
+import { ArrowRight, Phone } from "@lucide/astro";
+import { client } from "../lib/client";
+import { resolvedBookingPrimaryHref, bookingPrimaryIsExternal } from "../lib/client/siteBooking";
+const bookingHref = resolvedBookingPrimaryHref(client);
+const bookingAttributes = bookingPrimaryIsExternal(bookingHref)
+  ? { target: "_blank", rel: "noopener noreferrer" }
+  : {};
+const phone = client.business.phone.replace(/\s/g, "");
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<section class:list={["home-contact", className]} aria-labelledby="contact-titre">
+  <div>
+    <h2 id="contact-titre">Et si nous en parlions ?</h2>
+    <p>
+      Le premier pas peut simplement être un échange.<br />Contactez-moi pour connaître les
+      disponibilités.
+    </p>
+  </div>
+  <div class="home-contact-actions">
+    <a class="home-button" href={bookingHref} {...bookingAttributes}
+      >Prendre rendez-vous <ArrowRight size={19} aria-hidden="true" /></a
+    >
+    <a class="home-text-link" href={`tel:${phone}`}
+      ><Phone size={17} aria-hidden="true" />{phone.replace(/(\d{2})(?=\d)/g, "$1 ")}</a
+    >
+  </div>
+</section>

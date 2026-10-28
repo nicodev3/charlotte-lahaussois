@@ -1,5 +1,6 @@
 ---
 import { getArticleNavigation } from "../lib/contentNavigation";
+import { ArrowRight, BookOpen } from "@lucide/astro";
 
 const articles = await getArticleNavigation();
 ---
@@ -11,14 +12,28 @@ const articles = await getArticleNavigation();
         {articles.map((article) => (
           <li>
             <a href={article.href}>
-              <p class="font-medium">{article.title}</p>
+              <h2>{article.title}</h2>
               {article.description && <p class="note">{article.description}</p>}
+              <span class="home-text-link">
+                Lire l’article
+                <ArrowRight size={18} aria-hidden="true" />
+              </span>
             </a>
           </li>
         ))}
       </ul>
     ) : (
-      <p>Aucun article publié pour le moment.</p>
+      <div class="articles-empty">
+        <>
+          <BookOpen size={32} stroke-width={1.5} aria-hidden="true" />
+          <h2>Un espace pour prolonger la réflexion.</h2>
+          <p>Aucun article publié pour le moment.</p>
+          <a class="home-text-link" href="/a-propos/">
+            Découvrir mon approche
+            <ArrowRight size={18} aria-hidden="true" />
+          </a>
+        </>
+      </div>
     )
   }
 </section>

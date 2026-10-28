@@ -3,6 +3,8 @@ import BaseLayout from "./BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Breadcrumb from "../components/Breadcrumb.astro";
 import { client } from "../lib/client";
+import AppointmentCallout from "../components/AppointmentCallout.astro";
+import "../styles/interior.css";
 
 interface Props {
   title: string;
@@ -11,20 +13,29 @@ interface Props {
   intro?: string;
   /** La page fournit son propre en-tête (ex. à propos avec portrait). */
   hidePageHeader?: boolean;
+  heading?: string;
+  showAppointment?: boolean;
 }
 
-const { title, description = "", intro = description, hidePageHeader = false } = Astro.props;
+const {
+  title,
+  description = "",
+  intro = description,
+  hidePageHeader = false,
+  heading = title,
+  showAppointment = true,
+} = Astro.props;
 ---
 
 <BaseLayout title={`${title} — ${client.seo.siteName}`} description={description}>
   <Header />
   <Breadcrumb currentLabel={title} />
 
-  <main class="site-container page" data-component="page">
+  <main id="contenu" class="home-container interior-page" data-component="page">
     {
       !hidePageHeader && (
         <header class:list={["page-header", Astro.slots.has("actions") && "page-header--actions"]}>
-          <h1>{title}</h1>
+          <h1>{heading}</h1>
           {intro && <p class="lead">{intro}</p>}
           <slot name="actions" />
         </header>
@@ -34,5 +45,6 @@ const { title, description = "", intro = description, hidePageHeader = false } =
     <div class="page-content">
       <slot />
     </div>
+    {showAppointment && <AppointmentCallout />}
   </main>
 </BaseLayout>

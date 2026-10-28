@@ -1,161 +1,69 @@
 ---
-import { ChevronDown, Menu } from "@lucide/astro";
-import HeaderTopBar from "./HeaderTopBar.astro";
+import { ArrowRight, Menu } from "@lucide/astro";
 import { client } from "../lib/client";
-import { splitContactNavItem } from "../lib/astroPageNavigation";
-import { getSiteNavigation } from "../lib/siteNavigation";
+import { resolvedBookingPrimaryHref, bookingPrimaryIsExternal } from "../lib/client/siteBooking";
 
 const b = client.business;
-const currentPath = Astro.url.pathname;
-
-const { main, practices } = await getSiteNavigation();
-const { primary: primaryNavItems, contact: contactNavItem } = splitContactNavItem(main);
-const showPracticesNav = practices.length > 0;
-
-function navLinkIsActive(href: string): boolean {
-  return href === "/"
-    ? currentPath === "/"
-    : currentPath === href || currentPath.startsWith(`${href}/`);
-}
-const practicesSectionActive = practices.some((it) => navLinkIsActive(it.href));
-
-const navLinkClass = "inline-flex h-10 items-center px-3";
-const mobileNavLinkClass = "block px-3 py-2";
-const summaryResetClass =
-  "cursor-pointer list-none select-none marker:hidden [&::-webkit-details-marker]:hidden";
+const bookingHref = resolvedBookingPrimaryHref(client);
+const bookingAttributes = bookingPrimaryIsExternal(bookingHref)
+  ? { target: "_blank", rel: "noopener noreferrer" }
+  : {};
+const links = [
+  { href: "/pourquoi-consulter/", label: "Pourquoi consulter ?" },
+  { href: "/a-propos/", label: "Mon approche" },
+  { href: "/tarifs/", label: "Tarifs" },
+];
+const currentPath = Astro.url.pathname.replace(/\/?$/, "/");
 ---
 
-<div class="sticky top-0 z-50" data-component="ui.header-stack">
-  <HeaderTopBar />
-
-  <header data-component="ui.header">
-    <div class="site-container py-3">
-      <div class="flex min-h-16 items-center justify-between gap-6">
-        <a
-          href="/"
-          class="inline-flex min-w-0 flex-col gap-0.5 self-center"
-          aria-label={`Accueil — ${b.fullName}, ${b.title}`}
+<a class="home-skip-link" href="#contenu">Aller au contenu</a>
+<header class="home-header">
+  <div class="home-container home-header-inner">
+    <a class="home-brand" href="/" aria-label={`Accueil — ${b.fullName}`}>
+      <span class="home-brand-mark" aria-hidden="true">cl.</span>
+      <span><strong>{b.fullName}</strong><span>{b.title}</span></span>
+    </a>
+    <nav class="home-desktop-nav" aria-label="Navigation principale">
+      {
+        links.map((link) => (
+          <a href={link.href} aria-current={currentPath === link.href ? "page" : undefined}>
+            {link.label}
+          </a>
+        ))
+      }
+      <a class="home-button home-button-small" href={bookingHref} {...bookingAttributes}>
+        Prendre rendez-vous <ArrowRight size={17} aria-hidden="true" />
+      </a>
+    </nav>
+    <details class="home-menu">
+      <summary aria-label="Ouvrir ou fermer le menu"><Menu size={25} aria-hidden="true" /></summary>
+      <nav aria-label="Navigation mobile">
+        {
+          links.map((link) => (
+            <a href={link.href} aria-current={currentPath === link.href ? "page" : undefined}>
+              {link.label}
+            </a>
+          ))
+        }
+        <a href="/contact/" aria-current={currentPath === "/contact/" ? "page" : undefined}
+          >Contact</a
         >
-          <span class="leading-tight">{b.fullName}</span>
-          <span class="text-sm leading-snug">{b.title}</span>
-        </a>
+        <a class="home-button" href={bookingHref} {...bookingAttributes}>Prendre rendez-vous</a>
+      </nav>
+    </details>
+  </div>
+</header>
 
-        <nav
-          class="hidden max-w-[62vw] flex-wrap items-center justify-end gap-1 text-base md:flex"
-          aria-label="Navigation principale"
-        >
-          {
-            primaryNavItems.map((it) => (
-              <a
-                class={navLinkClass}
-                href={it.href}
-                aria-current={navLinkIsActive(it.href) ? "page" : undefined}
-              >
-                {it.label}
-              </a>
-            ))
-          }
-          {
-            showPracticesNav && (
-              <details class="relative">
-                <summary
-                  class:list={[navLinkClass, summaryResetClass, "gap-1"]}
-                  aria-current={practicesSectionActive ? "page" : undefined}
-                >
-                  Mes pratiques
-                  <ChevronDown class="size-4" size={16} aria-hidden="true" />
-                </summary>
-                <div
-                  class="absolute right-0 top-full z-30 mt-1 min-w-56 max-w-xs py-2"
-                  role="group"
-                  aria-label="Pages pratiques"
-                >
-                  {practices.map((it) => (
-                    <a
-                      class="block px-4 py-2 text-sm"
-                      href={it.href}
-                      aria-current={navLinkIsActive(it.href) ? "page" : undefined}
-                    >
-                      {it.label}
-                    </a>
-                  ))}
-                </div>
-              </details>
-            )
-          }
-          {
-            contactNavItem && (
-              <a
-                class={navLinkClass}
-                href={contactNavItem.href}
-                aria-current={navLinkIsActive(contactNavItem.href) ? "page" : undefined}
-              >
-                {contactNavItem.label}
-              </a>
-            )
-          }
-        </nav>
-
-        <details class="relative md:hidden">
-          <summary
-            class:list={["flex h-11 w-11 items-center justify-center", summaryResetClass]}
-            aria-label="Ouvrir ou fermer le menu de navigation"
-          >
-            <Menu class="size-6" size={24} aria-hidden="true" />
-          </summary>
-
-          <div class="absolute right-0 top-full z-20 mt-2 w-[min(20rem,calc(100vw-2rem))] p-3">
-            <nav class="flex flex-col gap-1" aria-label="Navigation mobile">
-              {
-                primaryNavItems.map((it) => (
-                  <a
-                    class={mobileNavLinkClass}
-                    href={it.href}
-                    aria-current={navLinkIsActive(it.href) ? "page" : undefined}
-                  >
-                    {it.label}
-                  </a>
-                ))
-              }
-              {
-                showPracticesNav && (
-                  <details>
-                    <summary class:list={[mobileNavLinkClass, summaryResetClass]}>
-                      Mes pratiques
-                    </summary>
-                    <div
-                      class="mt-1 flex flex-col gap-1 pl-3"
-                      role="group"
-                      aria-label="Pages pratiques"
-                    >
-                      {practices.map((it) => (
-                        <a
-                          class="px-3 py-2 text-sm"
-                          href={it.href}
-                          aria-current={navLinkIsActive(it.href) ? "page" : undefined}
-                        >
-                          {it.label}
-                        </a>
-                      ))}
-                    </div>
-                  </details>
-                )
-              }
-              {
-                contactNavItem && (
-                  <a
-                    class={mobileNavLinkClass}
-                    href={contactNavItem.href}
-                    aria-current={navLinkIsActive(contactNavItem.href) ? "page" : undefined}
-                  >
-                    {contactNavItem.label}
-                  </a>
-                )
-              }
-            </nav>
-          </div>
-        </details>
-      </div>
-    </div>
-  </header>
-</div>
+<script>
+  const menu = document.querySelector<HTMLDetailsElement>(".home-menu");
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && menu?.open) {
+      menu.open = false;
+      menu.querySelector("summary")?.focus();
+    }
+  });
+  document.addEventListener("click", (event) => {
+    if (menu?.open && event.target instanceof Node && !menu.contains(event.target))
+      menu.open = false;
+  });
+</script>

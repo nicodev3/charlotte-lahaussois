@@ -10,14 +10,18 @@ const hasHours = enabledContactHoursRows(client.contact.hours).length > 0;
 const waitingListNote = client.practice.waitingListNote ?? "";
 ---
 
-<section class="page-block grid items-start gap-6 md:grid-cols-2" data-component="contact.info">
+<section
+  class="contact-overview"
+  data-component="contact.info"
+  aria-label="Coordonnées et horaires de consultation"
+>
   <ContactCard stacked />
 
   {
     hasHours && (
       <div data-component="contact.hours">
         <ContactHoursBlock />
-        {waitingListNote && <p class="mt-4">{waitingListNote}</p>}
+        {waitingListNote && <p class="contact-availability">{waitingListNote}</p>}
       </div>
     )
   }

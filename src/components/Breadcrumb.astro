@@ -26,7 +26,11 @@ const crumbs = [{ href: "/", label: "Accueil" }, ...parents];
 
 {
   segments.length > 0 && (
-    <nav class="site-container py-4" aria-label="Fil d'Ariane" data-component="ui.breadcrumb">
+    <nav
+      class="home-container interior-breadcrumb"
+      aria-label="Fil d'Ariane"
+      data-component="ui.breadcrumb"
+    >
       <ol class="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm">
         {crumbs.map((crumb) => (
           <li class="inline-flex items-center gap-2">

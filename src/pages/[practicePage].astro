@@ -8,6 +8,8 @@ import {
   practicePageContentId,
   practicePageEntryMatchesContentId,
 } from "../lib/practicePageRegistry";
+import { getSiteNavigation } from "../lib/siteNavigation";
+import { ArrowRight } from "@lucide/astro";
 
 export async function getStaticPaths() {
   const entries = await getCollection("practicePages", isPublishedEntry);
@@ -31,10 +33,29 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+const { practices } = await getSiteNavigation();
 ---
 
 <StandardPageLayout title={entry.data.title} description={entry.data.description ?? ""}>
-  <article class="content-rich" data-component="content.practice-page">
-    <Content />
-  </article>
+  <div class="practice-layout">
+    <article class="content-rich" data-component="content.practice-page"><Content /></article>
+    <aside class="practice-navigation" aria-labelledby="practice-nav-title">
+      <h2 id="practice-nav-title">Mes approches</h2><nav aria-label="Autres approches">
+        {
+          practices.map((practice) => (
+            <a
+              href={practice.href}
+              aria-current={
+                Astro.url.pathname.replace(/\/?$/, "/") === practice.href ? "page" : undefined
+              }
+            >
+              {practice.label}
+              <ArrowRight size={17} aria-hidden="true" />
+            </a>
+          ))
+        }
+      </nav><a class="home-text-link" href="/a-propos/"
+        >Mon parcours<ArrowRight size={17} aria-hidden="true" /></a>
+    </aside>
+  </div>
 </StandardPageLayout>

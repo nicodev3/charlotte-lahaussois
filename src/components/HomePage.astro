@@ -1,20 +1,13 @@
 ---
-import {
-  ArrowDown,
-  ArrowRight,
-  CalendarDays,
-  ChevronDown,
-  MapPin,
-  Menu,
-  Phone,
-  Video,
-} from "@lucide/astro";
+import { ArrowDown, ArrowRight, CalendarDays, ChevronDown, MapPin, Video } from "@lucide/astro";
 import { client } from "../lib/client";
 import { getSiteNavigation } from "../lib/siteNavigation";
 import { getSiteCopy } from "../lib/siteCopy";
 import { resolvedBookingPrimaryHref, bookingPrimaryIsExternal } from "../lib/client/siteBooking";
 import { resolvedFaqEntries } from "../lib/client/faqPresets";
 import MonSoutienPsyCallout from "./MonSoutienPsyCallout.astro";
+import Header from "./Header.astro";
+import AppointmentCallout from "./AppointmentCallout.astro";
 
 const b = client.business;
 const bookingHref = resolvedBookingPrimaryHref(client);
@@ -24,8 +17,6 @@ const bookingAttributes = bookingPrimaryIsExternal(bookingHref)
 const { practices } = await getSiteNavigation();
 const copy = await getSiteCopy("accueil");
 const consultation = client.pricing.items[0];
-const phone = b.phone.replace(/\s/g, "");
-const displayPhone = phone.replace(/(\d{2})(?=\d)/g, "$1 ");
 const questions = resolvedFaqEntries(client.profession, client.contact.bookingUrl);
 const concerns = [
   {
@@ -47,33 +38,7 @@ const concerns = [
 ];
 ---
 
-<a class="home-skip-link" href="#contenu">Aller au contenu</a>
-<header class="home-header">
-  <div class="home-container home-header-inner">
-    <a class="home-brand" href="/" aria-label={`Accueil — ${b.fullName}`}>
-      <span class="home-brand-mark" aria-hidden="true">cl.</span>
-      <span><strong>{b.fullName}</strong><span>{b.title}</span></span>
-    </a>
-    <nav class="home-desktop-nav" aria-label="Navigation principale">
-      <a href="/pourquoi-consulter/">Pourquoi consulter ?</a>
-      <a href="/a-propos/">Mon approche</a>
-      <a href="/tarifs/">Tarifs</a>
-      <a class="home-button home-button-small" href={bookingHref} {...bookingAttributes}>
-        Prendre rendez-vous <ArrowRight size={17} aria-hidden="true" />
-      </a>
-    </nav>
-    <details class="home-menu">
-      <summary aria-label="Ouvrir ou fermer le menu"><Menu size={25} aria-hidden="true" /></summary>
-      <nav aria-label="Navigation mobile">
-        <a href="/pourquoi-consulter/">Pourquoi consulter ?</a>
-        <a href="/a-propos/">Mon approche</a>
-        <a href="/tarifs/">Tarifs</a>
-        <a href="/contact/">Contact</a>
-        <a class="home-button" href={bookingHref} {...bookingAttributes}>Prendre rendez-vous</a>
-      </nav>
-    </details>
-  </div>
-</header>
+<Header />
 
 <main id="contenu" class="home-page" data-component="home-page">
   <section class="home-container home-hero" aria-labelledby="accueil-titre">
@@ -152,7 +117,8 @@ const concerns = [
     <p>Adultes & grands adolescents <span>À partir du lycée</span></p>
     <p>
       Vie personnelle & professionnelle <span
-        >Accompagnement des particuliers et des entreprises</span>
+        >Accompagnement des particuliers et des entreprises</span
+      >
     </p>
     <p>Français & anglais <span>Au cabinet ou en visioconférence</span></p>
   </div>
@@ -250,32 +216,5 @@ const concerns = [
     </div>
   </section>
   <div class="home-container"><MonSoutienPsyCallout headingLevel={2} /></div>
-  <section class="home-container home-contact" aria-labelledby="contact-titre">
-    <div>
-      <h2 id="contact-titre">Et si nous en parlions ?</h2><p>
-        Le premier pas peut simplement être un échange.<br />Contactez-moi pour connaître les
-        disponibilités.
-      </p>
-    </div>
-    <div class="home-contact-actions">
-      <a class="home-button" href={bookingHref} {...bookingAttributes}
-        >Prendre rendez-vous <ArrowRight size={19} aria-hidden="true" /></a
-      ><a class="home-text-link" href={`tel:${phone}`}
-        ><Phone size={17} aria-hidden="true" />{displayPhone}</a>
-    </div>
-  </section>
+  <AppointmentCallout class="home-container" />
 </main>
-
-<script>
-  const menu = document.querySelector<HTMLDetailsElement>(".home-menu");
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && menu?.open) {
-      menu.open = false;
-      menu.querySelector("summary")?.focus();
-    }
-  });
-  document.addEventListener("click", (event) => {
-    if (menu?.open && event.target instanceof Node && !menu.contains(event.target))
-      menu.open = false;
-  });
-</script>

@@ -1,0 +1,903 @@
+/* Pages intérieures : prolongement du système Les perspectives de stitch.css. */
+.home-desktop-nav a[aria-current="page"],
+.home-menu a[aria-current="page"] {
+  text-decoration: underline;
+  text-underline-offset: 0.4em;
+}
+.interior-breadcrumb {
+  padding-block: 1.5rem 0;
+  color: var(--color-muted);
+}
+.interior-breadcrumb ol {
+  font-size: 0.75rem;
+}
+.interior-breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.interior-breadcrumb a:hover {
+  text-decoration: underline;
+}
+.interior-page {
+  padding-block: 2.25rem 5rem;
+}
+.interior-page .page-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  column-gap: 3rem;
+  padding-bottom: 3.5rem;
+}
+.interior-page .page-header > * + * {
+  margin-top: 0;
+}
+.interior-page h1 {
+  font-size: clamp(2.5rem, 4.8vw, 4.25rem);
+  line-height: 1.12;
+  max-width: 19ch;
+  hyphens: auto;
+}
+.interior-page .page-header .lead {
+  grid-column: 1;
+  max-width: 60ch;
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--color-muted);
+  margin-top: 1.5rem;
+}
+.interior-page .page-header > .cta-primary {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: end;
+  margin-bottom: 0.375rem;
+}
+.interior-page .page-content {
+  margin: 0;
+}
+.interior-page .page-content > * + * {
+  margin-top: 0;
+}
+.interior-page h2 {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.2;
+}
+.interior-page h3 {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.interior-page p {
+  text-wrap: pretty;
+}
+.interior-page > .home-contact {
+  margin-top: 5rem;
+  margin-bottom: 0;
+}
+.interior-page > .home-contact h2 {
+  font-size: clamp(2rem, 3.3vw, 2.75rem);
+}
+.interior-page [hidden] {
+  display: none !important;
+}
+.interior-page .cta-primary {
+  min-height: 52px;
+  font-size: 0.875rem;
+}
+.interior-page .note {
+  font-size: 0.8125rem;
+  line-height: 1.85;
+  color: var(--color-muted);
+}
+.interior-prose {
+  max-width: 68ch;
+}
+.interior-prose p {
+  font-size: 1rem;
+  line-height: 1.95;
+  color: var(--color-muted);
+}
+.interior-prose p + p {
+  margin-top: 1.5rem;
+}
+.interior-editorial {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 6rem;
+  padding-block: 4rem;
+  border-top: 1px solid var(--color-rule);
+}
+.interior-editorial > div:first-child > p {
+  margin-top: 1.25rem;
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+/* Présentation et parcours. */
+.about-intro {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  padding-bottom: 4.5rem;
+}
+.about-intro h1 {
+  max-width: 13ch;
+}
+.about-role {
+  font-size: 1.375rem;
+  color: var(--color-primary);
+  line-height: 1.6;
+  margin-top: 1.5rem;
+}
+.about-identity .home-text-link {
+  margin-top: 1.5rem;
+}
+.about-summary {
+  padding: 2.75rem;
+  background: var(--color-lilac);
+  border-radius: var(--radius-xl);
+}
+.about-summary h2 {
+  font-size: 1.875rem;
+  max-width: 18ch;
+}
+.about-summary > p {
+  margin-top: 1.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.85;
+}
+.about-summary > .about-registration {
+  border-top: 1px solid rgb(36 63 74 / 25%);
+  padding-top: 1.25rem;
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+.about-portrait {
+  max-width: 430px;
+  justify-self: end;
+  width: 100%;
+}
+.about-portrait > div {
+  border-radius: var(--radius-xl);
+}
+.about-story {
+  padding-bottom: 4.5rem;
+}
+[data-component="panel.credentials"] {
+  padding-block: 4rem;
+  border-top: 1px solid var(--color-rule);
+}
+[data-component="panel.credentials"] > .note {
+  margin-top: 1rem;
+}
+.credentials-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  padding-top: 2.25rem;
+}
+.credentials-columns h3 {
+  font-size: 1.375rem;
+  font-weight: 500;
+  padding-bottom: 1rem;
+}
+.credentials-columns li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-block: 1.25rem;
+  border-top: 1px solid var(--color-rule);
+}
+.credentials-columns li strong {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  font-weight: 600;
+}
+.credentials-columns li p {
+  color: var(--color-muted);
+  font-size: 0.8125rem;
+  margin-top: 0.375rem;
+}
+.qualification-year {
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-muted);
+}
+[data-component="credentials.affiliations"] {
+  padding-top: 1.25rem;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+}
+.about-practices {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 6rem;
+  padding: 3rem;
+  background: var(--color-mint);
+  border-radius: var(--radius-xl);
+}
+.about-practices h2 {
+  font-size: 1.875rem;
+}
+.about-practices p {
+  margin-top: 1.25rem;
+  font-size: 0.9375rem;
+  line-height: 1.8;
+}
+.about-practices li + li {
+  border-top: 1px solid rgb(36 63 74 / 25%);
+}
+.about-practices a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  min-height: 60px;
+  padding-block: 0.875rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.about-practices a svg {
+  flex-shrink: 0;
+}
+.about-practices a:hover {
+  text-decoration: underline;
+}
+
+/* Tarifs et cadre de consultation. */
+.pricing-overview {
+  display: grid;
+  grid-template-columns: 1fr 0.85fr;
+  gap: 5rem;
+  align-items: center;
+  padding-bottom: 4rem;
+}
+.pricing-offers {
+  display: grid;
+  gap: 1.5rem;
+}
+[data-component="pricing.item"] {
+  padding: 2.5rem;
+  background: var(--color-lilac);
+  border-radius: var(--radius-xl);
+}
+[data-component="pricing.item"] h2 {
+  font-size: 1.5rem;
+  letter-spacing: -0.025em;
+}
+[data-component="pricing.item"] > div > p {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+}
+.pricing-amount {
+  font-size: 4.5rem;
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+  margin-top: 2rem;
+}
+.pricing-amount > span {
+  font-size: 2.25rem;
+}
+.pricing-duration {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgb(36 63 74 / 25%);
+  font-size: 0.875rem;
+}
+.pricing-context h2 {
+  font-size: 2rem;
+}
+.pricing-context p {
+  color: var(--color-muted);
+  font-size: 0.9375rem;
+  line-height: 1.9;
+  margin-top: 1.5rem;
+  max-width: 44ch;
+}
+.pricing-context .pricing-reduced {
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-rule);
+  color: var(--color-fg);
+}
+.pricing-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  padding-block: 3rem 4rem;
+  border-top: 1px solid var(--color-rule);
+}
+.pricing-details h2 {
+  font-size: 1.75rem;
+}
+.pricing-details p {
+  color: var(--color-muted);
+  font-size: 0.9375rem;
+  line-height: 1.9;
+  max-width: 55ch;
+}
+[data-component="pricing.payment"] ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  padding-top: 0.5rem;
+}
+[data-component="pricing.payment"] li {
+  font-size: 0.8125rem;
+  padding: 0.5rem 0.875rem;
+  border: 1px solid var(--color-rule);
+  border-radius: 0.375rem;
+}
+[data-component="panel.conditions"] {
+  border-top: 1px solid var(--color-rule);
+  padding-top: 3rem;
+}
+[data-component="panel.conditions"] > div.grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3rem;
+  margin-top: 2rem;
+}
+[data-component="panel.conditions"] h3 + p {
+  margin-top: 0.5rem;
+}
+[data-component="panel.conditions"] .note + .note {
+  margin-top: 0.375rem;
+}
+[data-component="panel.conditions"] > .note {
+  margin-top: 2rem;
+  max-width: 80ch;
+}
+[data-component="conditions.limits"] {
+  padding: 1.25rem 1.5rem;
+  margin-top: 1.5rem;
+  background: var(--color-accent);
+  border-radius: 0.5rem;
+}
+[data-component="conditions.limits"] > p {
+  font-weight: 600;
+  color: var(--color-fg);
+  margin-bottom: 0.375rem;
+}
+
+/* Motifs : des lignes ouvertes plutôt qu'une grille de cartes. */
+[data-component="motifs.item"] {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 6rem;
+  align-items: baseline;
+  padding-block: 2rem;
+  border-top: 1px solid var(--color-rule);
+}
+[data-component="motifs.item"] h2 {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  letter-spacing: -0.025em;
+  max-width: 30ch;
+}
+[data-component="motifs.item"] p {
+  font-size: 0.9375rem;
+  line-height: 1.9;
+  color: var(--color-muted);
+  max-width: 65ch;
+}
+
+/* Contact : coordonnées lisibles et horaires dans un panneau menthe. */
+.contact-overview {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.contact-details h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1.25rem;
+}
+.contact-channel {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 1.375rem;
+  border-top: 1px solid var(--color-rule);
+}
+.contact-channel > svg {
+  flex-shrink: 0;
+}
+.contact-channel > span {
+  min-width: 0;
+  flex: 1;
+}
+.contact-channel > span > span {
+  display: block;
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  margin-bottom: 0.375rem;
+}
+.contact-channel strong {
+  font-size: 1rem;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+.contact-channel:hover strong {
+  text-decoration: underline;
+}
+.contact-address {
+  padding-top: 2rem;
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--color-rule);
+}
+.contact-address h3 {
+  margin-bottom: 0.875rem;
+}
+.contact-address address {
+  font-style: normal;
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--color-muted);
+}
+.contact-address > .note {
+  margin-top: 0.75rem;
+}
+.contact-address > .home-text-link {
+  margin-top: 0.75rem;
+}
+.contact-map-toggle {
+  cursor: pointer;
+  font-weight: 400;
+  color: var(--color-muted);
+  font-size: 0.8125rem;
+}
+.contact-map-status {
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  line-height: 1.8;
+}
+.contact-map-toggle:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+[data-component="contact.map"] {
+  height: 300px;
+  border-radius: var(--radius-xl);
+  margin-top: 1rem;
+  z-index: 0;
+}
+[data-component="contact.map"]:focus-within {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 4px;
+}
+[data-component="contact.hours"] {
+  padding: 2.5rem;
+  background: var(--color-mint);
+  border-radius: var(--radius-xl);
+}
+[data-component="contact.hours-block"] h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+[data-component="contact.hours-block"] table {
+  width: 100%;
+  font-size: 0.8125rem;
+  line-height: 1.75;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+[data-component="contact.hours-block"] th {
+  font-weight: 600;
+  text-align: left;
+  padding: 0.875rem 1.5rem 0.875rem 0;
+  vertical-align: top;
+}
+[data-component="contact.hours-block"] td {
+  text-align: right;
+  padding-block: 0.875rem;
+}
+[data-component="contact.hours-block"] tr {
+  border-top: 1px solid rgb(36 63 74 / 25%);
+}
+.contact-availability {
+  margin-top: 1.5rem;
+  font-size: 0.8125rem;
+  line-height: 1.8;
+}
+[data-component="contact.form"] {
+  max-width: 50rem;
+  margin-block: 4rem;
+}
+[data-component="contact.form"] label {
+  display: block;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+.interior-faq {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 6rem;
+  padding-top: 4rem;
+  margin-top: 4rem;
+  border-top: 1px solid var(--color-rule);
+}
+.interior-faq > div:first-child > p {
+  font-size: 0.9375rem;
+  color: var(--color-muted);
+  line-height: 1.8;
+  margin-top: 1.25rem;
+}
+.interior-faq .home-faq-list summary {
+  border: 0;
+}
+.interior-faq .home-faq-list details > p {
+  padding: 0 2rem 1.5rem 0;
+}
+
+/* Textes longs, pratiques, articles et mentions légales. */
+.practice-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 6rem;
+  align-items: start;
+}
+.interior-page .content-rich {
+  font-size: 1rem;
+  line-height: 1.95;
+  max-width: 70ch;
+  color: var(--color-muted);
+}
+.interior-page .content-rich h2 {
+  font-size: 1.875rem;
+  color: var(--color-fg);
+  margin-top: 2.75rem;
+  margin-bottom: 1rem;
+}
+.interior-page .content-rich h2:first-child {
+  margin-top: 0;
+}
+.interior-page .content-rich h3 {
+  margin-top: 2rem;
+  color: var(--color-fg);
+}
+.interior-page .content-rich a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+.interior-page .content-rich img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-xl);
+}
+.interior-page .content-rich table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+.practice-navigation {
+  padding: 2rem;
+  background: var(--color-lilac);
+  border-radius: var(--radius-xl);
+}
+.practice-navigation h2 {
+  font-size: 1.375rem;
+  margin-bottom: 1.25rem;
+}
+.practice-navigation nav > a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 56px;
+  padding-block: 0.875rem;
+  border-top: 1px solid rgb(36 63 74 / 25%);
+  font-size: 0.8125rem;
+}
+.practice-navigation a > svg {
+  flex-shrink: 0;
+}
+.practice-navigation a:hover {
+  text-decoration: underline;
+}
+.practice-navigation a[aria-current="page"] {
+  font-weight: 700;
+}
+.practice-navigation > .home-text-link {
+  margin-top: 1rem;
+}
+.articles-empty {
+  background: var(--color-mint);
+  padding: 3rem;
+  border-radius: var(--radius-xl);
+}
+.articles-empty h2 {
+  max-width: 23ch;
+  margin-top: 1.5rem;
+}
+.articles-empty p {
+  font-size: 0.9375rem;
+  margin-top: 1rem;
+}
+.articles-empty .home-text-link {
+  margin-top: 1rem;
+}
+[data-component="content.article-list"] li {
+  border-top: 1px solid var(--color-rule);
+  padding-block: 2rem;
+}
+[data-component="content.article-list"] li h2 {
+  font-size: 1.75rem;
+}
+[data-component="content.article-list"] li .note {
+  margin-top: 1rem;
+  max-width: 65ch;
+}
+[data-component="content.article-list"] li .home-text-link {
+  margin-top: 1rem;
+}
+[data-component="legal.editor"],
+[data-component="legal.hosting"],
+[data-component="legal.privacy"],
+[data-component="legal.cookies"] {
+  max-width: 70ch;
+  padding-block: 2rem;
+  border-top: 1px solid var(--color-rule);
+  font-size: 0.9375rem;
+  line-height: 1.9;
+  color: var(--color-muted);
+}
+.interior-page [data-component^="legal."] h2 {
+  color: var(--color-fg);
+  font-size: 1.75rem;
+  margin-bottom: 1.25rem;
+}
+.interior-page [data-component^="legal."] a {
+  text-decoration: underline;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 1100px) {
+  .about-intro,
+  .pricing-overview,
+  .contact-overview,
+  .credentials-columns {
+    gap: 3rem;
+  }
+  .interior-editorial,
+  .about-practices,
+  .interior-faq,
+  .practice-layout,
+  [data-component="motifs.item"] {
+    gap: 3rem;
+  }
+  .practice-layout {
+    grid-template-columns: minmax(0, 1fr) 280px;
+  }
+  [data-component="contact.hours"] {
+    padding: 2rem;
+  }
+}
+@media (max-width: 900px) {
+  .interior-page {
+    padding-top: 1.75rem;
+  }
+  .interior-page .page-header {
+    grid-template-columns: 1fr;
+  }
+  .interior-page .page-header > .cta-primary {
+    grid-column: 1;
+    grid-row: auto;
+    justify-self: start;
+    margin-top: 1.25rem;
+  }
+  .about-intro,
+  .pricing-overview,
+  .contact-overview,
+  .credentials-columns,
+  .interior-editorial,
+  .interior-faq,
+  .about-practices {
+    gap: 2rem;
+  }
+  .about-summary {
+    padding: 2rem;
+  }
+  .about-role {
+    font-size: 1.125rem;
+  }
+  .interior-editorial {
+    grid-template-columns: 0.7fr 1.3fr;
+  }
+  .pricing-details {
+    gap: 3rem;
+  }
+  .contact-overview {
+    grid-template-columns: 1fr;
+  }
+  [data-component="contact.hours"] {
+    max-width: 100%;
+  }
+  [data-component="contact.hours-block"] td {
+    text-align: left;
+  }
+  .practice-layout {
+    grid-template-columns: minmax(0, 1fr) 240px;
+    gap: 2rem;
+  }
+  .practice-navigation {
+    padding: 1.5rem;
+  }
+  [data-component="panel.conditions"] > div.grid {
+    gap: 2rem;
+  }
+}
+@media (max-width: 640px) {
+  .interior-breadcrumb {
+    padding-top: 0.75rem;
+  }
+  .interior-breadcrumb ol {
+    font-size: 0.6875rem;
+  }
+  .interior-page {
+    padding-block: 1.5rem 3.5rem;
+  }
+  .interior-page h1 {
+    font-size: 2.5rem;
+  }
+  .interior-page .page-header {
+    padding-bottom: 2.5rem;
+  }
+  .interior-page .page-header .lead {
+    margin-top: 1.25rem;
+    font-size: 0.9375rem;
+  }
+  .interior-page > .home-contact {
+    margin-top: 3.5rem;
+  }
+  .about-intro,
+  .interior-editorial,
+  .credentials-columns,
+  .about-practices,
+  .pricing-overview,
+  .pricing-details,
+  .practice-layout,
+  .interior-faq {
+    grid-template-columns: 1fr;
+  }
+  .about-intro {
+    padding-bottom: 3rem;
+    gap: 2rem;
+  }
+  .about-intro h1 {
+    font-size: 2.75rem;
+  }
+  .about-role {
+    font-size: 1.125rem;
+    margin-top: 1.25rem;
+  }
+  .about-identity .home-text-link {
+    margin-top: 1rem;
+  }
+  .about-summary {
+    padding: 1.75rem;
+  }
+  .about-summary h2 {
+    font-size: 1.75rem;
+  }
+  .about-portrait {
+    justify-self: start;
+    max-width: 350px;
+  }
+  .interior-editorial {
+    padding-block: 2.5rem;
+    gap: 1.5rem;
+  }
+  .interior-prose p {
+    font-size: 0.9375rem;
+  }
+  [data-component="panel.credentials"] {
+    padding-block: 2.5rem;
+  }
+  .credentials-columns {
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+  }
+  .credentials-columns li {
+    gap: 1rem;
+  }
+  .qualification-year {
+    font-size: 0.6875rem;
+  }
+  .about-practices {
+    padding: 1.75rem;
+    gap: 1.25rem;
+  }
+  .about-practices h2 {
+    font-size: 1.75rem;
+  }
+  .pricing-overview {
+    padding-bottom: 2.5rem;
+    gap: 2rem;
+  }
+  [data-component="pricing.item"] {
+    padding: 1.75rem;
+  }
+  .pricing-amount {
+    font-size: 4rem;
+  }
+  .pricing-context h2 {
+    font-size: 1.75rem;
+  }
+  .pricing-details {
+    gap: 2rem;
+    padding-block: 2rem 2.5rem;
+  }
+  [data-component="panel.conditions"] {
+    padding-top: 2.5rem;
+  }
+  [data-component="panel.conditions"] > div.grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  [data-component="motifs.item"] {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding-block: 1.75rem;
+  }
+  [data-component="motifs.item"] h2 {
+    font-size: 1.375rem;
+  }
+  [data-component="contact.hours"] {
+    padding: 1.75rem;
+  }
+  .contact-channel {
+    gap: 0.75rem;
+  }
+  .contact-channel strong {
+    font-size: 0.875rem;
+  }
+  [data-component="contact.hours-block"] table {
+    font-size: 0.75rem;
+  }
+  [data-component="contact.hours-block"] th {
+    padding-right: 1rem;
+  }
+  .interior-faq {
+    padding-top: 2.5rem;
+    margin-top: 2.5rem;
+    gap: 1.5rem;
+  }
+  .interior-faq .home-faq-list details > p {
+    padding-right: 0;
+  }
+  .practice-layout {
+    gap: 2.5rem;
+  }
+  .practice-navigation {
+    padding: 1.75rem;
+  }
+  .articles-empty {
+    padding: 1.75rem;
+  }
+  .articles-empty h2 {
+    font-size: 1.75rem;
+  }
+}
+@media (max-width: 360px) {
+  .interior-page h1 {
+    font-size: 2.125rem;
+  }
+  .about-intro h1 {
+    font-size: 2.375rem;
+  }
+  .about-summary,
+  .about-practices,
+  [data-component="contact.hours"],
+  [data-component="pricing.item"] {
+    padding: 1.25rem;
+  }
+  .contact-channel > svg:last-child {
+    display: none;
+  }
+}

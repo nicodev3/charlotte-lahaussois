@@ -41,6 +41,61 @@ typography:
     fontSize: "0.875rem"
     fontWeight: 600
     lineHeight: 1.4
+  interior-display:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "clamp(2.5rem, 4.8vw, 4.25rem)"
+    fontWeight: 500
+    lineHeight: 1.12
+    letterSpacing: "-0.035em"
+  interior-headline:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "clamp(1.75rem, 3vw, 2.5rem)"
+    fontWeight: 500
+    lineHeight: 1.2
+    letterSpacing: "-0.035em"
+  interior-title:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "1.125rem"
+    fontWeight: 600
+    lineHeight: 1.5
+    letterSpacing: "-0.015em"
+  interior-body:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "1rem"
+    fontWeight: 400
+    lineHeight: 1.95
+  interior-lead:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "1rem"
+    fontWeight: 400
+    lineHeight: 1.85
+  supporting:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "0.8125rem"
+    fontWeight: 400
+    lineHeight: 1.85
+  metadata:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "0.75rem"
+    fontWeight: 400
+  panel-headline:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "1.875rem"
+    fontWeight: 500
+    lineHeight: 1.2
+    letterSpacing: "-0.035em"
+  price:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "4.5rem"
+    fontWeight: 500
+    lineHeight: 1.15
+    letterSpacing: "-0.035em"
+  price-unit:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "2.25rem"
+    fontWeight: 500
+    lineHeight: 1.15
+    letterSpacing: "-0.035em"
 rounded:
   selection: "0.375rem"
   control: "0.5rem"
@@ -139,6 +194,8 @@ The same family gives headings and practical information a consistent voice. Dis
 
 Display type is reserved for the strongest invitation. Headlines introduce sections; titles organize rows. Body copy uses relaxed leading, varying from 1.8 to 1.9 by context. Introductory copy is bounded around 39–47 characters; expanded answers allow 65 characters. Supporting rows use smaller text without competing with headings. Numerical facts use tabular figures.
 
+Interior pages extend this ramp with dedicated page display, section headline and semibold row-title roles. Interior reading copy uses the `interior-body` role at a 68–70ch measure; introductory copy uses `interior-lead` at up to 60ch. Notes use `supporting`, while breadcrumbs, qualification years and contact labels use `metadata`. The compact `panel-headline` serves tinted summary panels and long-form subheadings. Fee amounts use the `price` and `price-unit` roles with tabular figures. The sidecar records mobile changes and contextual heading sizes; these roles supplement the approved homepage ramp.
+
 **The One-Family Rule.** Use Manrope across display, prose and controls; hierarchy comes from scale, weight, spacing and contrast.
 
 ## Layout
@@ -146,6 +203,8 @@ Display type is reserved for the strongest invitation. Headlines introduce secti
 Containers are centered and capped at 77rem. Desktop gutters are 3rem per side, decreasing to 2rem at 1100px, 1.25rem at 640px and 1rem at 360px. The implementation uses asymmetric two-column grids, with 5rem gaps for editorial pairs; these reduce to 3rem and then 2rem as space narrows.
 
 At 900px navigation becomes a compact disclosure. At 640px paired content stacks, actions can fill their container, and reading order remains the DOM order. Large section spacing contracts from 7.5rem to 5rem and then 3.75rem. Dense rows use the smaller spacing steps while major regions retain generous separation. These are responsive patterns, not a requirement that every future page repeat the homepage composition.
+
+Interior editorial pairs use open ruled grids, typically with 5–6rem desktop gaps, contracting to 3rem and 2rem. Reading pages pair flexible prose with a 320px side rail, reduced to 280px at 1100px and 240px at 900px. Contact columns stack at 900px; editorial, qualification, pricing and reading grids stack at 640px. Page titles and leads precede actions in mobile reading order. The shared centered container and its gutters remain authoritative.
 
 ## Elevation & Depth
 
@@ -173,11 +232,27 @@ The shared field treatment is white with a quiet one-pixel border and control ra
 
 ### Navigation
 
-Desktop navigation uses compact medium-weight text and underline hover. Mobile navigation uses native details/summary, a bordered menu control and an aligned bordered panel. Escape restores focus to the summary; clicking outside closes the menu. The skip link becomes visible on focus.
+Desktop navigation uses compact medium-weight text and underline hover. Mobile navigation uses native details/summary, a bordered menu control and an aligned bordered panel. Escape restores focus to the summary; clicking outside closes the menu. The skip link becomes visible on focus. The same extracted header is used throughout the public site; current-page links carry `aria-current="page"` and an underline. The shared footer retains its existing source and appearance.
 
 ### Ruled lists and disclosure rows
 
 Content rows use bottom rules, restrained semibold titles and supporting slate prose. FAQ disclosures use native details/summary, a small chevron that rotates when open, and bounded answer text. The disclosure state is immediate, without an entrance animation.
+
+### Interior editorial and qualification rows
+
+Open sections use fine top rules and asymmetric heading/prose columns. Qualifications use two columns of ruled rows, semibold names, muted supporting text and a separate nonshrinking tabular year. On phones the columns stack; no extra card boundary is introduced.
+
+### Fee and hours panels
+
+Fee panels reuse lilac, the large panel radius and panel padding, with a large tabular amount, smaller currency unit and a ruled duration row. Hours panels reuse mint with a full-width collapsed table, semibold day headings, tabular times and fine translucent rules. Both use reduced panel padding on narrow screens. Payment-method labels are static outlined tags, not interactive controls.
+
+### Reading navigation and closing callout
+
+Practice navigation is a lilac side rail with ruled links, at least 56px high; the current link is bold and declared with `aria-current`. It follows the reading column when stacked. Article and legal prose remain bounded, with underlined inline links and tables allowed to scroll horizontally. The shared mint appointment callout reuses the homepage action and phone-link treatments; its actions stack on mobile. Interior FAQs retain the existing native disclosure treatment.
+
+### Optional contact map
+
+The map is loaded on request inside a rounded 300px region. Its trigger exposes loading and disabled states, status text reports unavailable/offline loading, and keyboard focus within the map receives a visible outline. Contact channels remain independently readable and actionable.
 
 ## Do's and Don'ts
 

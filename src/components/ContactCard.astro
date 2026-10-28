@@ -1,5 +1,5 @@
 ---
-import { MessageCircle, CalendarDays } from "@lucide/astro";
+import { MessageCircle, CalendarDays, Phone, Mail, ArrowUpRight, MapPin } from "@lucide/astro";
 import { client } from "../lib/client";
 import { businessAddressText, businessStreetLines } from "../lib/client/businessAddress";
 import { resolvedBookingPrimaryHref } from "../lib/client/siteBooking";
@@ -17,23 +17,38 @@ const accessNote = client.contact.accessNote ?? "";
 
 <section data-component="contact.card">
   <div class:list={["grid gap-6", !stacked && "md:grid-cols-2"]}>
-    <div class="space-y-3">
-      <p>Cabinet {b.fullName}</p>
-      {businessStreetLines(b).map((line) => <p>{line}</p>)}
-      <p>{b.postalCode} {b.city}</p>
-      {accessNote && <p class="note">{accessNote}</p>}
+    <div class="contact-details">
+      <h2>Me contacter</h2>
       {
         channels.has("phone") && (
-          <p>
-            <a href={`tel:${b.phone.replace(/\s/g, "")}`}>{b.phone}</a>
-          </p>
+          <a class="contact-channel" href={`tel:${b.phone.replace(/\s/g, "")}`}>
+            <>
+              <Phone size={21} aria-hidden="true" />
+              <span>
+                <>
+                  <span>Par téléphone</span>
+                  <strong>{b.phone.replace(/\s/g, "").replace(/(\d{2})(?=\d)/g, "$1 ")}</strong>
+                </>
+              </span>
+              <ArrowUpRight size={19} aria-hidden="true" />
+            </>
+          </a>
         )
       }
       {
         channels.has("email") && (
-          <p>
-            <a href={`mailto:${b.email}`}>{b.email}</a>
-          </p>
+          <a class="contact-channel" href={`mailto:${b.email}`}>
+            <>
+              <Mail size={21} aria-hidden="true" />
+              <span>
+                <>
+                  <span>Par e-mail</span>
+                  <strong>{b.email}</strong>
+                </>
+              </span>
+              <ArrowUpRight size={19} aria-hidden="true" />
+            </>
+          </a>
         )
       }
       {
@@ -69,13 +84,43 @@ const accessNote = client.contact.accessNote ?? "";
           </div>
         )
       }
+      <div class="contact-address">
+        <h3>Au cabinet</h3><address>
+          {businessStreetLines(b).map((line) => <p>{line}</p>)}<p>{b.postalCode} {b.city}</p>
+        </address>{accessNote && <p class="note">{accessNote}</p>}<a
+          class="home-text-link"
+          href={`https://www.openstreetmap.org/search?query=${encodeURIComponent(businessAddressText(b))}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          ><MapPin size={17} aria-hidden="true" />Localiser le cabinet<ArrowUpRight
+            size={16}
+            aria-hidden="true"
+          /></a
+        >
+      </div>
     </div>
-    <div
-      class="min-h-64 w-full"
-      data-component="contact.map"
-      data-map-address={businessAddressText(b)}
-      data-map-name={b.fullName}
-    >
+    <div class="contact-map-section">
+      <button
+        type="button"
+        class="contact-map-toggle home-text-link"
+        data-map-toggle
+        aria-expanded="false"
+        aria-controls="cabinet-map"
+        >Afficher la carte interactive<ArrowUpRight size={17} aria-hidden="true" /></button
+      >
+      <p class="contact-map-status" role="status"></p>
+      <div
+        id="cabinet-map"
+        role="region"
+        tabindex="0"
+        class="min-h-64 w-full"
+        data-component="contact.map"
+        data-map-address={businessAddressText(b)}
+        data-map-name={b.fullName}
+        aria-label={`Carte du cabinet de ${b.fullName}`}
+        hidden
+      >
+      </div>
     </div>
   </div>
 </section>
@@ -95,7 +140,10 @@ const accessNote = client.contact.accessNote ?? "";
     endpoint.searchParams.set("q", address);
 
     try {
-      const response = await fetch(endpoint, { headers: { Accept: "application/json" } });
+      const response = await fetch(endpoint, {
+        headers: { Accept: "application/json" },
+        signal: AbortSignal.timeout(8000),
+      });
       if (!response.ok) return null;
       const results: unknown = await response.json();
       if (!Array.isArray(results) || results.length === 0) return null;
@@ -106,17 +154,18 @@ const accessNote = client.contact.accessNote ?? "";
     }
   }
 
-  /** Carte affichée uniquement si l’adresse est géocodée ; sinon le bloc est masqué. */
-  async function initMap(el: HTMLElement): Promise<void> {
+  /** Charger la carte sur demande ; l'adresse et le lien externe restent toujours disponibles. */
+  async function initMap(el: HTMLElement): Promise<boolean> {
     const address = el.dataset.mapAddress;
-    if (!address) return;
+    if (!address) return false;
 
     const coords = await geocodeAddress(address);
     if (!coords) {
       el.hidden = true;
-      return;
+      return false;
     }
 
+    el.hidden = false;
     const map = L.map(el, { scrollWheelZoom: false }).setView(coords, ZOOM);
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
@@ -125,9 +174,36 @@ const accessNote = client.contact.accessNote ?? "";
     L.marker(coords)
       .addTo(map)
       .bindPopup(`${el.dataset.mapName ?? "Cabinet"}<br>${address}`);
+    return true;
   }
 
   for (const el of document.querySelectorAll<HTMLElement>('[data-component="contact.map"]')) {
-    initMap(el);
+    const section = el.closest(".contact-map-section");
+    const toggle = section?.querySelector<HTMLButtonElement>("[data-map-toggle]");
+    const status = section?.querySelector<HTMLElement>(".contact-map-status");
+    toggle?.addEventListener("click", async () => {
+      toggle.disabled = true;
+      if (status) status.textContent = "Chargement de la carte…";
+      try {
+        const loaded = await initMap(el);
+        toggle.setAttribute("aria-expanded", String(loaded));
+        if (loaded) {
+          toggle.hidden = true;
+          el.focus();
+          if (status) status.textContent = "";
+        } else {
+          if (status)
+            status.textContent =
+              "La carte n’a pas pu être chargée. Utilisez le lien « Localiser le cabinet » ci-dessus.";
+          toggle.disabled = false;
+        }
+      } catch {
+        el.hidden = true;
+        if (status)
+          status.textContent =
+            "La carte n’est pas disponible. Vous pouvez utiliser le lien « Localiser le cabinet ».";
+        toggle.disabled = false;
+      }
+    });
   }
 </script>

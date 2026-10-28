@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-28T14:29:27.915Z",
+  "generatedAt": "2026-10-28T14:56:48.075512+00:00",
   "title": "Design System: Charlotte Lahaussois",
   "extensions": {
     "colorMeta": {
@@ -57,6 +57,46 @@
       "label": {
         "displayName": "Label",
         "purpose": "Filled actions."
+      },
+      "interior-display": {
+        "displayName": "Interior Display",
+        "purpose": "Public interior page titles; distinct from the homepage invitation."
+      },
+      "interior-headline": {
+        "displayName": "Interior Headline",
+        "purpose": "Interior section introductions."
+      },
+      "interior-title": {
+        "displayName": "Interior Title",
+        "purpose": "Semibold interior row and subsection titles."
+      },
+      "interior-body": {
+        "displayName": "Interior Body",
+        "purpose": "Long prose at 68-70ch; 1.95 leading."
+      },
+      "interior-lead": {
+        "displayName": "Interior Lead",
+        "purpose": "Introductory page copy at up to 60ch."
+      },
+      "supporting": {
+        "displayName": "Supporting",
+        "purpose": "Interior notes; related supporting contexts vary leading from 1.75 to 1.85."
+      },
+      "metadata": {
+        "displayName": "Metadata",
+        "purpose": "Breadcrumbs, qualification years and contact labels; inherits context leading."
+      },
+      "panel-headline": {
+        "displayName": "Panel Headline",
+        "purpose": "Tinted summary headings and long-form subheadings."
+      },
+      "price": {
+        "displayName": "Price",
+        "purpose": "Tabular consultation amount."
+      },
+      "price-unit": {
+        "displayName": "Price Unit",
+        "purpose": "Smaller currency unit within the consultation amount."
       }
     },
     "shadows": [],
@@ -116,13 +156,81 @@
         "role": "headline",
         "query": "(max-width: 640px)",
         "fontSize": "2.125rem"
+      },
+      {
+        "role": "interior-display",
+        "query": "(max-width: 640px)",
+        "fontSize": "2.5rem"
+      },
+      {
+        "role": "interior-display",
+        "query": "(max-width: 360px)",
+        "fontSize": "2.125rem"
+      },
+      {
+        "role": "interior-display",
+        "query": "(max-width: 640px)",
+        "fontSize": "2.75rem",
+        "context": "Profile title"
+      },
+      {
+        "role": "interior-display",
+        "query": "(max-width: 360px)",
+        "fontSize": "2.375rem",
+        "context": "Profile title"
+      },
+      {
+        "role": "interior-lead",
+        "query": "(max-width: 640px)",
+        "fontSize": "0.9375rem"
+      },
+      {
+        "role": "interior-body",
+        "query": "(max-width: 640px)",
+        "fontSize": "0.9375rem",
+        "context": "Editorial prose only; rich reading content remains 1rem"
+      },
+      {
+        "role": "metadata",
+        "query": "(max-width: 640px)",
+        "fontSize": "0.6875rem",
+        "context": "Breadcrumb and qualification year only"
+      },
+      {
+        "role": "panel-headline",
+        "query": "(max-width: 640px)",
+        "fontSize": "1.75rem",
+        "context": "Tinted summary panels only"
+      },
+      {
+        "role": "price",
+        "query": "(max-width: 640px)",
+        "fontSize": "4rem"
       }
     ],
     "accessibility": {
       "focus": "3px solid var(--color-primary), offset 5px; var(--color-mint) on dark grounds",
       "segmentedFocus": "3px solid var(--color-primary), offset 2px",
       "selection": "var(--color-lilac) ground with var(--color-deep) text"
-    }
+    },
+    "interiorTypographyContexts": [
+      {
+        "role": "interior-headline",
+        "purpose": "Compact section headings: 1.75rem for contact, legal, article list and fee details; 2rem for fee context, becoming 1.75rem at 640px."
+      },
+      {
+        "role": "interior-title",
+        "purpose": "Qualification and practice rail headings use 1.375rem medium weight; professional-role copy uses 1.375rem/1.6, reducing to 1.125rem at 900px."
+      },
+      {
+        "role": "interior-headline",
+        "purpose": "Fee-panel titles use 1.5rem with -0.025em tracking; ruled consultation-reason titles use 1.5rem/1.4, reducing to 1.375rem at 640px."
+      },
+      {
+        "role": "supporting",
+        "purpose": "Contact times use 0.8125rem/1.75, reducing to 0.75rem at 640px; channel values use 1rem medium weight, reducing to 0.875rem."
+      }
+    ]
   },
   "components": [
     {
@@ -146,6 +254,22 @@
       "description": "Native disclosure, a fine boundary and an immediate open state.",
       "html": "<details class=\"ds-faq\"><summary>Une question pratique <svg width=\"19\" height=\"19\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"/></svg></summary><p>Un texte de r?ponse clair et lisible.</p></details>",
       "css": ".ds-faq{font-family:var(--font-sans);color:var(--color-fg);border-block:1px solid var(--color-rule)}.ds-faq summary{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;list-style:none;cursor:pointer;padding-block:1.375rem;font-size:.9375rem;font-weight:500}.ds-faq summary::-webkit-details-marker{display:none}.ds-faq summary:hover{color:var(--color-primary)}.ds-faq summary:focus-visible{outline:3px solid var(--color-primary);outline-offset:5px}.ds-faq[open] summary>svg{rotate:180deg}.ds-faq p{max-width:65ch;padding:0 2rem 1.5rem 0;color:var(--color-muted);font-size:.875rem;line-height:1.9}"
+    },
+    {
+      "name": "Fee panel",
+      "kind": "card",
+      "refersTo": "panel-lilac",
+      "description": "Lilac fee surface with tabular amount and a ruled duration row.",
+      "html": "<section class=\"ds-fee\"><h2>Consultation</h2><p class=\"ds-amount\">90 <span>€</span></p><p class=\"ds-duration\">Durée de la séance</p></section>",
+      "css": ".ds-fee{font-family:var(--font-sans);color:var(--color-fg);background:var(--color-lilac);border-radius:var(--radius-xl);padding:2.5rem}.ds-fee h2{font-size:1.5rem;font-weight:500;line-height:1.2;letter-spacing:-.025em;margin:0}.ds-amount{font-size:4.5rem;font-weight:500;line-height:1.15;letter-spacing:-.035em;font-variant-numeric:tabular-nums;margin:2rem 0 0}.ds-amount span{font-size:2.25rem}.ds-duration{margin:1.25rem 0 0;padding-top:1.25rem;border-top:1px solid rgb(36 63 74 / 25%);font-size:.875rem}@media(max-width:640px){.ds-fee{padding:1.75rem}.ds-amount{font-size:4rem}}@media(max-width:360px){.ds-fee{padding:1.25rem}}"
+    },
+    {
+      "name": "Practice navigation",
+      "kind": "nav",
+      "refersTo": "panel-lilac",
+      "description": "Lilac reading side rail with ruled links and a bold current-page state.",
+      "html": "<aside class=\"ds-practice\"><h2>Les approches</h2><nav aria-label=\"Approches\"><a href=\"#approche\" aria-current=\"page\">Approche intégrative</a><a href=\"#autre\">Autre approche</a></nav></aside>",
+      "css": ".ds-practice{font-family:var(--font-sans);color:var(--color-fg);padding:2rem;background:var(--color-lilac);border-radius:var(--radius-xl)}.ds-practice h2{font-size:1.375rem;font-weight:500;line-height:1.2;letter-spacing:-.035em;margin:0 0 1.25rem}.ds-practice a{display:flex;align-items:center;min-height:56px;padding-block:.875rem;border-top:1px solid rgb(36 63 74 / 25%);font-size:.8125rem;color:inherit;text-decoration:none}.ds-practice a[aria-current]{font-weight:700}.ds-practice a:hover{text-decoration:underline}.ds-practice a:focus-visible{outline:3px solid var(--color-primary);outline-offset:5px}@media(max-width:900px){.ds-practice{padding:1.5rem}}@media(max-width:640px){.ds-practice{padding:1.75rem}}"
     }
   ],
   "narrative": {

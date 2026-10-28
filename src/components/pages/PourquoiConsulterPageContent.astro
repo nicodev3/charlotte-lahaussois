@@ -10,7 +10,7 @@ const specialtyLabels = client.practice.specialties;
     {
       specialtyLabels.map((label) => (
         <li data-component="motifs.item">
-          <p class="font-medium">{label}</p>
+          <h2>{label}</h2>
           <p>{getSpecialtyMotifSummary(label)}</p>
         </li>
       ))
