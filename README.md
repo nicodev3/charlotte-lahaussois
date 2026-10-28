@@ -97,6 +97,30 @@ Un site client est créé via **« Use this template »** puis évolue de façon
 
 Les icônes utilisent le package officiel **`@lucide/astro`** (composants SVG tree-shakables). Pour en ajouter une, voir la section **5.1)** dans [`REFERENCE_SYSTEME.md`](REFERENCE_SYSTEME.md).
 
+## Reprendre le design sur une autre machine
+
+Le dépôt conserve le contexte nécessaire pour poursuivre le travail avec Impeccable :
+
+- `PRODUCT.md` : public, positionnement et contraintes du site.
+- `DESIGN.md` et `.impeccable/design.json` : système visuel et composants.
+- `.impeccable/config.json` : préférences partagées, dont la création directement dans le code.
+- `.impeccable/surfaces/` : briefs et décisions propres aux pages.
+- `.cursor/skills/impeccable/`, `.cursor/agents/impeccable-*.md` et `.cursor/hooks.json` : instructions, lanceurs et intégration Cursor.
+
+Après avoir cloné le dépôt et installé les dépendances avec `npm ci`, démarrer le site avec `npm run dev`. Pour charger le contexte Impeccable depuis la racine du projet :
+
+```powershell
+# Windows / PowerShell
+& .\.cursor\skills\impeccable\scripts\impeccable.cmd context
+```
+
+```sh
+# macOS / Linux
+sh .cursor/skills/impeccable/scripts/impeccable context
+```
+
+Le binaire n’est pas versionné : le lanceur le récupère au besoin dans le cache utilisateur et vérifie son empreinte à partir du manifeste fourni. Ce premier téléchargement nécessite un accès réseau. Les captures, journaux, choix intermédiaires et réglages locaux Impeccable sont ignorés par Git ; ils ne sont pas nécessaires pour reprendre le projet.
+
 ## Ressources
 
 Documentation Astro : <https://docs.astro.build>.

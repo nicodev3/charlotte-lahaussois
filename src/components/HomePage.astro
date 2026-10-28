@@ -1,20 +1,281 @@
 ---
-import Header from "./Header.astro";
-import HeroSection from "./sections/HeroSection.astro";
-import ServicesSection from "./sections/ServicesSection.astro";
-import FaqSection from "./FaqSection.astro";
+import {
+  ArrowDown,
+  ArrowRight,
+  CalendarDays,
+  ChevronDown,
+  MapPin,
+  Menu,
+  Phone,
+  Video,
+} from "@lucide/astro";
+import { client } from "../lib/client";
+import { getSiteNavigation } from "../lib/siteNavigation";
+import { getSiteCopy } from "../lib/siteCopy";
+import { resolvedBookingPrimaryHref, bookingPrimaryIsExternal } from "../lib/client/siteBooking";
+import { resolvedFaqEntries } from "../lib/client/faqPresets";
 import MonSoutienPsyCallout from "./MonSoutienPsyCallout.astro";
+
+const b = client.business;
+const bookingHref = resolvedBookingPrimaryHref(client);
+const bookingAttributes = bookingPrimaryIsExternal(bookingHref)
+  ? { target: "_blank", rel: "noopener noreferrer" }
+  : {};
+const { practices } = await getSiteNavigation();
+const copy = await getSiteCopy("accueil");
+const consultation = client.pricing.items[0];
+const phone = b.phone.replace(/\s/g, "");
+const displayPhone = phone.replace(/(\d{2})(?=\d)/g, "$1 ");
+const questions = resolvedFaqEntries(client.profession, client.contact.bookingUrl);
+const concerns = [
+  {
+    title: "Quand le passé reste présent",
+    text: "Événement traumatique, deuil, violences ou difficultés d’attachement.",
+  },
+  {
+    title: "Quand les relations deviennent difficiles",
+    text: "Difficultés relationnelles ou familiales, isolement et estime de soi.",
+  },
+  {
+    title: "Quand le travail pèse trop",
+    text: "Souffrance au travail, épuisement professionnel ou reconversion.",
+  },
+  {
+    title: "Quand vous ne vous reconnaissez plus",
+    text: "Troubles dépressifs, questionnement identitaire et recherche de repères.",
+  },
+];
 ---
 
-<Header />
+<a class="home-skip-link" href="#contenu">Aller au contenu</a>
+<header class="home-header">
+  <div class="home-container home-header-inner">
+    <a class="home-brand" href="/" aria-label={`Accueil — ${b.fullName}`}>
+      <span class="home-brand-mark" aria-hidden="true">cl.</span>
+      <span><strong>{b.fullName}</strong><span>{b.title}</span></span>
+    </a>
+    <nav class="home-desktop-nav" aria-label="Navigation principale">
+      <a href="/pourquoi-consulter/">Pourquoi consulter ?</a>
+      <a href="/a-propos/">Mon approche</a>
+      <a href="/tarifs/">Tarifs</a>
+      <a class="home-button home-button-small" href={bookingHref} {...bookingAttributes}>
+        Prendre rendez-vous <ArrowRight size={17} aria-hidden="true" />
+      </a>
+    </nav>
+    <details class="home-menu">
+      <summary aria-label="Ouvrir ou fermer le menu"><Menu size={25} aria-hidden="true" /></summary>
+      <nav aria-label="Navigation mobile">
+        <a href="/pourquoi-consulter/">Pourquoi consulter ?</a>
+        <a href="/a-propos/">Mon approche</a>
+        <a href="/tarifs/">Tarifs</a>
+        <a href="/contact/">Contact</a>
+        <a class="home-button" href={bookingHref} {...bookingAttributes}>Prendre rendez-vous</a>
+      </nav>
+    </details>
+  </div>
+</header>
 
-<main class="site-container" data-component="home-page">
-  <section class="section-spacing" data-component="section.hero">
-    <HeroSection />
+<main id="contenu" class="home-page" data-component="home-page">
+  <section class="home-container home-hero" aria-labelledby="accueil-titre">
+    <div class="home-hero-copy">
+      <h1 id="accueil-titre">
+        Un espace<br />pour vous.<br /><span>De nouvelles<br />perspectives.</span>
+      </h1>
+      <p class="home-intro">{copy.data.chapo}</p>
+      {copy.data.introduction && <p class="home-intro-secondary">{copy.data.introduction}</p>}
+      <a class="home-button" href={bookingHref} {...bookingAttributes}
+        >Prendre rendez-vous <ArrowRight size={19} aria-hidden="true" /></a
+      >
+      <a class="home-text-link home-discover" href="#accompagnement"
+        >Découvrir l’accompagnement <ArrowDown size={16} aria-hidden="true" /></a
+      >
+    </div>
+    <div class="home-consultation" aria-labelledby="consultation-titre">
+      <div class="home-consultation-heading">
+        <CalendarDays size={26} stroke-width={1.5} aria-hidden="true" />
+        <h2 id="consultation-titre">Faisons le premier pas,<br />à votre rythme.</h2>
+      </div>
+      <fieldset class="home-mode-selector">
+        <legend>Où souhaitez-vous consulter ?</legend>
+        <div class="home-mode-options">
+          <label class="home-mode-choice"
+            ><input
+              id="mode-cabinet"
+              type="radio"
+              name="consultation-mode"
+              value="cabinet"
+              checked
+            /><span><MapPin size={17} aria-hidden="true" />Au cabinet</span></label
+          >
+          <label class="home-mode-choice"
+            ><input id="mode-visio" type="radio" name="consultation-mode" value="visio" /><span
+              ><Video size={18} aria-hidden="true" />En visio</span
+            ></label
+          >
+        </div>
+      </fieldset>
+      <div class="home-mode-information" aria-live="polite" aria-atomic="true">
+        <div id="cabinet-info">
+          <h3>À Versailles – Le Chesnay</h3>
+          <address>{b.addressLine2}<br />{b.addressLine1}<br />{b.postalCode} {b.city}</address>
+          <p class="home-access">{client.contact.accessNote}</p>
+        </div>
+        <div id="visio-info">
+          <h3>Depuis un lieu qui vous convient</h3>
+          <p>Un accompagnement à distance, avec le même cadre d’écoute qu’au cabinet.</p>
+          <p class="home-access">
+            Les modalités de connexion sont à convenir lors de la prise de rendez-vous.
+          </p>
+        </div>
+      </div>
+      {
+        consultation && (
+          <div class="home-session-facts">
+            <>
+              <span>{consultation.name}</span>
+              <span>
+                {consultation.durationMinutes} min <span aria-hidden="true">/</span>{" "}
+                {consultation.price} €
+              </span>
+            </>
+          </div>
+        )
+      }
+      <a class="home-consultation-link" href={bookingHref} {...bookingAttributes}
+        >Convenir d’un rendez-vous <ArrowRight size={20} aria-hidden="true" /></a
+      >
+      <p class="home-availability">{client.practice.waitingListNote}</p>
+    </div>
   </section>
-  <section class="section-spacing" data-component="section.services-wrapper">
-    <ServicesSection />
+
+  <div class="home-container home-context" aria-label="Les consultations en bref">
+    <p>Adultes & grands adolescents <span>À partir du lycée</span></p>
+    <p>
+      Vie personnelle & professionnelle <span
+        >Accompagnement des particuliers et des entreprises</span>
+    </p>
+    <p>Français & anglais <span>Au cabinet ou en visioconférence</span></p>
+  </div>
+
+  <section id="accompagnement" class="home-container home-concerns" aria-labelledby="motifs-titre">
+    <div class="home-section-intro">
+      <h2 id="motifs-titre">Il n’y a pas de petite raison<br />de vouloir aller mieux.</h2>
+      <p>
+        Un événement, une période difficile, un sentiment qui s’installe. Vous pouvez venir avec vos
+        questions, même si les mots ne sont pas encore là.
+      </p>
+      <a class="home-text-link" href="/pourquoi-consulter/"
+        >Les motifs de consultation <ArrowRight size={18} aria-hidden="true" /></a
+      >
+    </div>
+    <div class="home-concern-list">
+      {
+        concerns.map((concern) => (
+          <a class="home-concern" href="/pourquoi-consulter/">
+            <>
+              <div>
+                <>
+                  <h3>{concern.title}</h3>
+                  <p>{concern.text}</p>
+                </>
+              </div>
+              <ArrowRight size={22} stroke-width={1.5} aria-hidden="true" />
+            </>
+          </a>
+        ))
+      }
+    </div>
   </section>
-  <MonSoutienPsyCallout class="my-10" headingLevel={2} />
-  <FaqSection class="my-10" />
+
+  <section class="home-about" aria-labelledby="approche-titre">
+    <div class="home-container home-about-grid">
+      <div class="home-about-title">
+        <h2 id="approche-titre">
+          Vous accompagner,<br />dans ce qui vous<br /><span>rend unique.</span>
+        </h2>
+        <p class="home-signature">
+          {b.fullName}<span>Psychologue du travail & psychothérapeute</span>
+        </p>
+      </div>
+      <div class="home-about-copy">
+        <p>
+          Ma double casquette de psychologue du travail et de psychologue-psychothérapeute me permet
+          de vous accompagner de manière intégrative, dans un système qui vous est propre et unique.
+        </p>
+        <p>
+          Quel que soit votre besoin, je suis à votre écoute, sans jugement. Ensemble, nous
+          explorons ce que vous traversez, en tenant compte de votre histoire et du lien entre votre
+          esprit et votre corps.
+        </p>
+        <a class="home-text-link" href="/a-propos/"
+          >Découvrir mon parcours et mon approche <ArrowRight size={18} aria-hidden="true" /></a
+        >
+        <div class="home-approach-links" aria-label="Les approches proposées">
+          {
+            practices.map((practice) => (
+              <a href={practice.href}>
+                {practice.label}
+                <ArrowRight size={15} aria-hidden="true" />
+              </a>
+            ))
+          }
+        </div>
+        <p class="home-about-li">Également formée à la LI-ICV, Intégration du cycle de la vie.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-container home-faq" aria-labelledby="questions-titre">
+    <div class="home-section-intro">
+      <h2 id="questions-titre">Avant de<br />nous rencontrer.</h2>
+      <p>Quelques repères pour aborder ce premier rendez-vous plus sereinement.</p>
+      <a class="home-text-link" href="/contact/"
+        >Une autre question ? Écrivez-moi <ArrowRight size={18} aria-hidden="true" /></a
+      >
+    </div>
+    <div class="home-faq-list">
+      {
+        questions.map((question) => (
+          <details>
+            <>
+              <summary>
+                {question.question}
+                <ChevronDown size={19} aria-hidden="true" />
+              </summary>
+              <p>{question.answer}</p>
+            </>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+  <div class="home-container"><MonSoutienPsyCallout headingLevel={2} /></div>
+  <section class="home-container home-contact" aria-labelledby="contact-titre">
+    <div>
+      <h2 id="contact-titre">Et si nous en parlions ?</h2><p>
+        Le premier pas peut simplement être un échange.<br />Contactez-moi pour connaître les
+        disponibilités.
+      </p>
+    </div>
+    <div class="home-contact-actions">
+      <a class="home-button" href={bookingHref} {...bookingAttributes}
+        >Prendre rendez-vous <ArrowRight size={19} aria-hidden="true" /></a
+      ><a class="home-text-link" href={`tel:${phone}`}
+        ><Phone size={17} aria-hidden="true" />{displayPhone}</a>
+    </div>
+  </section>
 </main>
+
+<script>
+  const menu = document.querySelector<HTMLDetailsElement>(".home-menu");
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && menu?.open) {
+      menu.open = false;
+      menu.querySelector("summary")?.focus();
+    }
+  });
+  document.addEventListener("click", (event) => {
+    if (menu?.open && event.target instanceof Node && !menu.contains(event.target))
+      menu.open = false;
+  });
+</script>

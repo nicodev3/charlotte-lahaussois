@@ -4,6 +4,9 @@ import { client } from "../lib/client";
 import HomePage from "../components/HomePage.astro";
 ---
 
-<BaseLayout title={client.seo.siteName} description={client.seo.description}>
+<BaseLayout
+  title={client.seo.siteName}
+  description={`${client.business.fullName}, psychologue-psychothérapeute à ${client.business.city}. Consultations pour adultes et grands adolescents, au cabinet ou en visio. Contact et rendez-vous.`}
+>
   <HomePage />
 </BaseLayout>

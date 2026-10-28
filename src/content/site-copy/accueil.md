@@ -1,3 +1,3 @@
 ---
-chapo: "Psychologue à Lyon, Pierre Janet accompagne les adultes, les adolescents et les familles en cabinet ou en visio. Les consultations s’appuient sur un cadre d’écoute, de respect et de confidentialité. Le suivi est adapté à vos besoins, sans promesse de résultat."
+chapo: "Psychologue-psychothérapeute à Versailles – Le Chesnay, je vous accompagne face aux difficultés personnelles et professionnelles, au cabinet ou en visio. Un temps pour vous écouter, comprendre ce que vous traversez et avancer à votre rythme."
 ---

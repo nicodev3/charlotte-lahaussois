@@ -96,10 +96,18 @@ export function normalizeFaqCustomItems(val: unknown): FaqCustomEntry[] {
 }
 
 /** Contenu FAQ affiché sur le site : l’intégralité du catalogue, en dur (pas de sélection client). */
-export function resolvedFaqEntries(profession: ClientProfession): FaqResolvedItem[] {
+export function resolvedFaqEntries(
+  profession: ClientProfession,
+  bookingUrl?: string,
+): FaqResolvedItem[] {
   return FAQ_PRESETS.map((p) => ({
     id: p.id,
     question: p.question,
-    answer: faqPresetAnswerForProfession(p, profession),
+    answer:
+      p.id === "rdvBooking"
+        ? bookingUrl?.trim()
+          ? "Vous pouvez prendre rendez-vous via le lien de réservation du site. Vous pouvez aussi me contacter par téléphone ou par e-mail pour préciser votre besoin avant la première séance."
+          : "Contactez-moi par téléphone ou par e-mail pour me faire part de votre demande et convenir d’un rendez-vous. Les disponibilités sont à confirmer lors de cet échange."
+        : faqPresetAnswerForProfession(p, profession),
   }));
 }

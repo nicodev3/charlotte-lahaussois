@@ -42,7 +42,7 @@ const mainEntityJsonLd = JSON.stringify({
 const faqPageJsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: resolvedFaqEntries(client.profession).map((item) => ({
+  mainEntity: resolvedFaqEntries(client.profession, client.contact.bookingUrl).map((item) => ({
     "@type": "Question",
     name: item.question,
     acceptedAnswer: { "@type": "Answer", text: item.answer },

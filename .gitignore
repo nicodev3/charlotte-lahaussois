@@ -33,3 +33,12 @@ pnpm-debug.log*
 
 # Claude Code (peut contenir des clés / permissions locales)
 .claude/
+
+# Impeccable — contexte durable partagé, sans état de session ni captures
+/.impeccable/*
+!/.impeccable/config.json
+!/.impeccable/design.json
+!/.impeccable/surfaces/
+
+# Moteur Impeccable propre à chaque système, récupéré par les lanceurs
+/.cursor/skills/impeccable/scripts/bin/

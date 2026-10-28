@@ -23,4 +23,16 @@
  *
  * @type {import("astro").AstroUserConfig["fonts"]}
  */
-export const siteFonts = [];
+import { fontProviders } from "astro/config";
+
+/** @type {import("astro").AstroUserConfig["fonts"]} */
+export const siteFonts = [
+  {
+    provider: fontProviders.google(),
+    name: "Manrope",
+    cssVariable: "--font-manrope",
+    weights: [400, 500, 600, 700],
+    subsets: ["latin"],
+    fallbacks: ["sans-serif"],
+  },
+];
