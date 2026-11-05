@@ -20,19 +20,19 @@ const consultation = client.pricing.items[0];
 const questions = resolvedFaqEntries(client.profession, client.contact.bookingUrl);
 const concerns = [
   {
-    title: "Quand le passé reste présent",
+    title: "Traumatismes, deuils et attachement",
     text: "Événement traumatique, deuil, violences ou difficultés d’attachement.",
   },
   {
-    title: "Quand les relations deviennent difficiles",
+    title: "Relations et estime de soi",
     text: "Difficultés relationnelles ou familiales, isolement et estime de soi.",
   },
   {
-    title: "Quand le travail pèse trop",
+    title: "Souffrance au travail",
     text: "Souffrance au travail, épuisement professionnel ou reconversion.",
   },
   {
-    title: "Quand vous ne vous reconnaissez plus",
+    title: "Troubles dépressifs et identité",
     text: "Troubles dépressifs, questionnement identitaire et recherche de repères.",
   },
 ];
@@ -44,7 +44,7 @@ const concerns = [
   <section class="home-container home-hero" aria-labelledby="accueil-titre">
     <div class="home-hero-copy">
       <h1 id="accueil-titre">
-        Un espace<br />pour vous.<br /><span>De nouvelles<br />perspectives.</span>
+        {b.fullName} <span>{b.title}</span>
       </h1>
       <p class="home-intro">{copy.data.chapo}</p>
       {copy.data.introduction && <p class="home-intro-secondary">{copy.data.introduction}</p>}
@@ -58,7 +58,7 @@ const concerns = [
     <div class="home-consultation" aria-labelledby="consultation-titre">
       <div class="home-consultation-heading">
         <CalendarDays size={26} stroke-width={1.5} aria-hidden="true" />
-        <h2 id="consultation-titre">Faisons le premier pas,<br />à votre rythme.</h2>
+        <h2 id="consultation-titre">Modalités de consultation</h2>
       </div>
       <fieldset class="home-mode-selector">
         <legend>Où souhaitez-vous consulter ?</legend>
@@ -86,7 +86,7 @@ const concerns = [
           <p class="home-access">{client.contact.accessNote}</p>
         </div>
         <div id="visio-info">
-          <h3>Depuis un lieu qui vous convient</h3>
+          <h3>En visioconférence</h3>
           <p>Un accompagnement à distance, avec le même cadre d’écoute qu’au cabinet.</p>
           <p class="home-access">
             Les modalités de connexion sont à convenir lors de la prise de rendez-vous.
@@ -125,7 +125,7 @@ const concerns = [
 
   <section id="accompagnement" class="home-container home-concerns" aria-labelledby="motifs-titre">
     <div class="home-section-intro">
-      <h2 id="motifs-titre">Il n’y a pas de petite raison<br />de vouloir aller mieux.</h2>
+      <h2 id="motifs-titre">Pourquoi consulter ?</h2>
       <p>
         Un événement, une période difficile, un sentiment qui s’installe. Vous pouvez venir avec vos
         questions, même si les mots ne sont pas encore là.
@@ -157,7 +157,7 @@ const concerns = [
     <div class="home-container home-about-grid">
       <div class="home-about-title">
         <h2 id="approche-titre">
-          Vous accompagner,<br />dans ce qui vous<br /><span>rend unique.</span>
+          Une pratique<br /><span>intégrative</span>
         </h2>
         <p class="home-signature">
           {b.fullName}<span>Psychologue du travail & psychothérapeute</span>
@@ -193,7 +193,7 @@ const concerns = [
 
   <section class="home-container home-faq" aria-labelledby="questions-titre">
     <div class="home-section-intro">
-      <h2 id="questions-titre">Avant de<br />nous rencontrer.</h2>
+      <h2 id="questions-titre">Questions fréquentes</h2>
       <p>Quelques repères pour aborder ce premier rendez-vous plus sereinement.</p>
       <a class="home-text-link" href="/contact/"
         >Une autre question ? Écrivez-moi <ArrowRight size={18} aria-hidden="true" /></a

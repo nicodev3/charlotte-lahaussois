@@ -232,7 +232,12 @@ textarea::placeholder {
   font-weight: 500;
 }
 .home-hero h1 > span {
+  display: block;
+  margin-top: 0.75rem;
   color: var(--color-primary);
+  font-size: 0.45em;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 .home-intro {
   max-width: 47ch;

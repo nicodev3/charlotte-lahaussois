@@ -27,7 +27,7 @@ const hasPortrait = Object.keys(import.meta.glob("../../assets/photos/portrait.w
       <PractitionerPortrait class="about-portrait" />
     ) : (
       <div class="about-summary">
-        <h2>Un accompagnement qui vous ressemble.</h2>
+        <h2>Présentation</h2>
         {sidebarSummary && <p>{sidebarSummary}</p>}
         <p class="about-registration">
           {client.credentials.license.registrationLabel === "rpps" ? "RPPS" : "ADELI"} :{" "}
@@ -40,9 +40,7 @@ const hasPortrait = Object.keys(import.meta.glob("../../assets/photos/portrait.w
 
 <section class="interior-editorial about-story" aria-labelledby="about-story-title">
   <div>
-    <h2 id="about-story-title">Chaque parcours<br />est singulier.</h2><p>
-      Ma pratique et mon approche
-    </p>
+    <h2 id="about-story-title">Ma pratique<br />et mon approche</h2>
   </div>
   <div class="interior-prose">{paragraphs.map((paragraph) => <p>{paragraph}</p>)}</div>
 </section>
@@ -55,7 +53,7 @@ const hasPortrait = Object.keys(import.meta.glob("../../assets/photos/portrait.w
       <>
         <div>
           <>
-            <h2 id="about-practices-title">Les approches qui nourrissent ma pratique.</h2>
+            <h2 id="about-practices-title">Mes approches</h2>
             <p>Un accompagnement intégratif, attentif à votre histoire.</p>
           </>
         </div>
