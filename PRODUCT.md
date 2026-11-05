@@ -8,7 +8,7 @@ web
 
 ## Users
 
-Adultes et grands adolescents, ainsi que des entreprises, qui recherchent un accompagnement face à des problématiques personnelles ou professionnelles. Les personnes peuvent consulter au cabinet ou en visioconférence.
+Des entreprises, ainsi que des adultes et grands adolescents, qui recherchent un accompagnement face à des problématiques professionnelles ou personnelles. Les personnes peuvent consulter au cabinet ou en visioconférence.
 
 ## Product Purpose
 
@@ -16,7 +16,7 @@ Le site présente la pratique de Charlotte Lahaussois, psychologue-psychothérap
 
 ## Positioning
 
-Une pratique intégrative qui associe la psychologie du travail et la psychothérapie. L’accompagnement considère chaque personne dans son système propre et unique, notamment dans les problématiques personnelles, professionnelles, de trauma et d’attachement. La thérapie LI-ICV (Lifespan Integration / Intégration du cycle de la vie) fait partie des outils présentés pour travailler l’intégration d’événements vécus et le lien entre l’esprit et le corps.
+Une pratique intégrative qui associe la psychologie du travail et la psychothérapie. La cliente souhaite mettre en avant la psychologie du travail et intervenir davantage en entreprise, en s’éloignant un peu de la clinique. L’accompagnement considère chaque personne dans son système propre et unique, notamment dans les problématiques personnelles, professionnelles, de trauma et d’attachement. La thérapie LI-ICV (Lifespan Integration / Intégration du cycle de la vie) fait partie des outils présentés pour travailler l’intégration d’événements vécus et le lien entre l’esprit et le corps.
 
 ## Operating Context
 
@@ -32,7 +32,7 @@ Les consultations sont proposées au cabinet à Versailles / Le Chesnay et en vi
 
 ## Brand Commitments
 
-Charlotte Lahaussois est présentée comme « Psychologue-Psychothérapeute ». La voix doit rester à l’écoute, sans jugement, respectueuse de la liberté, de la responsabilité et de l’unicité de chaque personne.
+Charlotte Lahaussois est présentée comme « Psychologue du travail & psychothérapeute ». La voix doit rester à l’écoute, sans jugement, respectueuse de la liberté, de la responsabilité et de l’unicité de chaque personne.
 
 ## Evidence on Hand
 

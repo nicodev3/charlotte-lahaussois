@@ -3,7 +3,7 @@
     "profession": "psychologue",
     "business": {
         "fullName": "Charlotte Lahaussois",
-        "title": "Psychologue-Psychothérapeute",
+        "title": "Psychologue du travail & psychothérapeute",
         "city": "Versailles - Le Chesnay",
         "addressLine1": "3 av du Maréchal de Lattre de Tassigny",
         "addressLine2": "Centre VIA SANA Rive Droite",
@@ -29,13 +29,13 @@
         ],
         "audienceOther": "Entreprises",
         "specialties": [
+            "Souffrance au travail, épuisement professionnel et reconversion",
+            "Burn out",
             "ESPT et adaptation au stress après événement traumatique",
             "Deuil, violences, harcèlement et troubles relationnels sévères",
             "Troubles dépressifs et dysthymie",
             "Difficultés relationnelles, familiales et isolement social",
-            "Souffrance au travail, épuisement professionnel et reconversion",
             "Questionnement identitaire, estime de soi et orientation",
-            "Burn out",
             "Troubles de l'attachement"
         ],
         "approaches": [
@@ -170,7 +170,7 @@
     },
     "aboutPage": {
         "intro": "\nJe crois profondément à la liberté et la responsabilité que chacun peut se donner face à un scénario de vie initial, ou d'évènements rencontrés, de re-décider dans sa vie personnelle et professionnelle; et par la thérapie LI-ICV (Lifepan Intégration - Intégration du cycle de la vie), de reprogrammer neurologiquement les évènements vécus, faire comprendre au corps que les évènements douloureux sont passés.\n\nMa double casquette de Psychologue du travail et Psychologue-Psychothérapeute ARS me permet de vous accompagner de manière intégrative, dans un système qui vous est propre et unique.\nQuel que soient vos besoins, je suis à votre écoute et là pour vous aider sans jugement. La thérapie est un processus de découverte de soi et lors de mes séances, j'encourage la transformation par l'adoption d'une attitude positive et de nouvelles habitudes, et par un accordage entre votre esprit et votre corps. J'ai les outils et l'expériences professionnelle pour vous aider à devenir qui vous êtes.",
-        "sidebarSummary": "Psychologue - Psychothérapeute à Versailles je reçois des adultes et grands adolescents ( à partir du lycée) à mon cabinet et/ou en visio, pour des problématiques personnelles et/ou professionnelles."
+        "sidebarSummary": "Psychologue du travail et psychothérapeute à Versailles, j'accompagne les entreprises et je reçois des adultes et grands adolescents (à partir du lycée) à mon cabinet et/ou en visio, pour des problématiques professionnelles et/ou personnelles."
     },
     "contact": {
         "hours": {

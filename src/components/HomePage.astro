@@ -18,6 +18,18 @@ const { practices } = await getSiteNavigation();
 const copy = await getSiteCopy("accueil");
 const consultation = client.pricing.items[0];
 const questions = resolvedFaqEntries(client.profession, client.contact.bookingUrl);
+const workAudiences = [
+  {
+    title: "Pour les entreprises",
+    text: "Contactez-moi pour échanger sur vos besoins.",
+    href: "/contact/",
+  },
+  {
+    title: "Pour les personnes",
+    text: "Souffrance au travail, épuisement professionnel, burn-out ou reconversion.",
+    href: "/pourquoi-consulter/",
+  },
+];
 const concerns = [
   {
     title: "Traumatismes, deuils et attachement",
@@ -26,10 +38,6 @@ const concerns = [
   {
     title: "Relations et estime de soi",
     text: "Difficultés relationnelles ou familiales, isolement et estime de soi.",
-  },
-  {
-    title: "Souffrance au travail",
-    text: "Souffrance au travail, épuisement professionnel ou reconversion.",
   },
   {
     title: "Troubles dépressifs et identité",
@@ -114,14 +122,45 @@ const concerns = [
   </section>
 
   <div class="home-container home-context" aria-label="Les consultations en bref">
-    <p>Adultes & grands adolescents <span>À partir du lycée</span></p>
     <p>
-      Vie personnelle & professionnelle <span
-        >Accompagnement des particuliers et des entreprises</span
+      Vie professionnelle & personnelle <span
+        >Accompagnement des entreprises et des particuliers</span
       >
     </p>
+    <p>Adultes & grands adolescents <span>À partir du lycée</span></p>
     <p>Français & anglais <span>Au cabinet ou en visioconférence</span></p>
   </div>
+
+  <section
+    id="psychologie-du-travail"
+    class="home-container home-concerns"
+    aria-labelledby="travail-titre"
+  >
+    <div class="home-section-intro">
+      <h2 id="travail-titre">Psychologie du travail</h2>
+      <p>
+        Titulaire d’un DESS de psychologie du travail, j’interviens auprès des entreprises et des
+        personnes en difficulté dans leur vie professionnelle.
+      </p>
+    </div>
+    <div class="home-concern-list">
+      {
+        workAudiences.map((audience) => (
+          <a class="home-concern" href={audience.href}>
+            <>
+              <div>
+                <>
+                  <h3>{audience.title}</h3>
+                  <p>{audience.text}</p>
+                </>
+              </div>
+              <ArrowRight size={22} stroke-width={1.5} aria-hidden="true" />
+            </>
+          </a>
+        ))
+      }
+    </div>
+  </section>
 
   <section id="accompagnement" class="home-container home-concerns" aria-labelledby="motifs-titre">
     <div class="home-section-intro">
