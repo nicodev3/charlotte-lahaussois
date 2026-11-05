@@ -245,6 +245,8 @@ textarea::placeholder {
   max-width: 47ch;
   margin-block: -0.875rem 1.875rem;
   color: var(--color-muted);
+  font-size: 0.9375rem;
+  line-height: 1.85;
 }
 .home-text-link {
   display: inline-flex;
@@ -767,6 +769,10 @@ textarea::placeholder {
     font-size: 0.9375rem;
     max-width: 44ch;
     margin-block: 1.5rem;
+  }
+  .home-intro-secondary {
+    max-width: 44ch;
+    margin-block: -0.5rem 1.5rem;
   }
   .home-hero-copy > .home-button {
     width: 100%;
