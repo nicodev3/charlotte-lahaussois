@@ -21,9 +21,11 @@
   --color-fg: #243f4a;
   --color-primary: #2e5654;
   --color-primary-fg: #ffffff;
+  --color-button: #2c8d7e;
+  --color-button-hover: #237166;
   --color-accent: #eef0f5;
   --color-muted: #53656f;
-  --color-lilac: #d8d4ec;
+  --color-linen: #efe7dc;
   --color-mint: #c4dcda;
   --color-rule: #cbd3d8;
   --color-deep: #213f45;
@@ -41,7 +43,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 ::selection {
-  background: var(--color-lilac);
+  background: var(--color-linen);
   color: var(--color-deep);
 }
 :focus-visible {
@@ -71,13 +73,13 @@ textarea::placeholder {
   opacity: 1;
 }
 .cta-primary {
-  background: var(--color-primary);
+  background: var(--color-button);
   color: var(--color-primary-fg);
   border-radius: 0.5rem;
   font-weight: 600;
 }
 .cta-primary:hover {
-  background: var(--color-deep);
+  background: var(--color-button-hover);
 }
 .cta-secondary {
   border: 1px solid var(--color-rule);
@@ -164,7 +166,7 @@ textarea::placeholder {
   min-height: 56px;
   padding: 1rem 1.5rem;
   border-radius: 0.5rem;
-  background: var(--color-primary);
+  background: var(--color-button);
   color: white;
   font-size: 0.875rem;
   line-height: 1.4;
@@ -172,7 +174,7 @@ textarea::placeholder {
   transition: background-color var(--duration-state) var(--ease-out);
 }
 .home-button:hover {
-  background: var(--color-deep);
+  background: var(--color-button-hover);
 }
 .home-button svg {
   flex-shrink: 0;
@@ -277,7 +279,7 @@ textarea::placeholder {
 }
 .home-consultation {
   padding: 2.5rem;
-  background: var(--color-lilac);
+  background: var(--color-linen);
   border-radius: 0.875rem;
   transition: background-color 400ms var(--ease-out);
 }

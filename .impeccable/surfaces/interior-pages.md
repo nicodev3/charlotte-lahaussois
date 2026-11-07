@@ -15,7 +15,7 @@ User approved the current homepage and explicitly requested the same visual worl
 
 THESIS: Make every public page feel part of the same welcoming practice, with shared navigation and practical next steps.
 
-OWN-WORLD: Inherit DESIGN.md, Manrope, mist and blue-grey ink, lilac and mint panels, flat surfaces, fine rules and modest rounded controls. Header is extracted from the approved homepage; Footer remains the existing shared component.
+OWN-WORLD: Inherit DESIGN.md, Manrope, mist and blue-grey ink, linen and mint panels, flat surfaces, fine rules and modest rounded controls. Header is extracted from the approved homepage; Footer remains the existing shared component.
 
 STORY: Read the practitioner's approach and qualifications; identify a reason to consult; understand fees and conditions; find the actual available contact methods. Preserve existing editorial model text without inventing medical content.
 

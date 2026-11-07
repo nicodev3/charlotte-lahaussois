@@ -1,14 +1,16 @@
 ---
 name: Charlotte Lahaussois
-description: A modern, open and calm visual system in blue-grey, lilac and mint.
+description: A modern, open and calm visual system in blue-grey, linen and mint.
 colors:
   bg: "#f7f8fa"
   fg: "#243f4a"
   primary: "#2e5654"
   primary-fg: "#ffffff"
+  button: "#2c8d7e"
+  button-hover: "#237166"
   accent: "#eef0f5"
   muted: "#53656f"
-  lilac: "#d8d4ec"
+  linen: "#efe7dc"
   mint: "#c4dcda"
   rule: "#cbd3d8"
   deep: "#213f45"
@@ -114,20 +116,20 @@ spacing:
   column: "5rem"
 components:
   button-primary:
-    backgroundColor: "{colors.primary}"
+    backgroundColor: "{colors.button}"
     textColor: "{colors.primary-fg}"
     typography: "{typography.label}"
     rounded: "{rounded.control}"
     padding: "1rem 1.5rem"
   button-primary-hover:
-    backgroundColor: "{colors.deep}"
+    backgroundColor: "{colors.button-hover}"
   button-small:
-    backgroundColor: "{colors.primary}"
+    backgroundColor: "{colors.button}"
     textColor: "{colors.primary-fg}"
     rounded: "{rounded.control}"
     padding: "0.875rem 1.125rem"
-  panel-lilac:
-    backgroundColor: "{colors.lilac}"
+  panel-linen:
+    backgroundColor: "{colors.linen}"
     textColor: "{colors.fg}"
     rounded: "{rounded.xl}"
     padding: "{spacing.panel}"
@@ -158,7 +160,7 @@ The material remains flat and precise: blue-grey ink, fine rules, restrained cor
 **Key Characteristics:**
 
 - Large, lightly weighted headings with generous breathing room.
-- Lilac and mint surfaces balanced by deep blue-green ink.
+- Linen and mint surfaces balanced by deep blue-green ink.
 - Quiet, functional motion and visible keyboard states.
 
 ## Colors
@@ -173,7 +175,7 @@ Cool mist neutrals and muted botanical accents keep contrast clear while softeni
 
 ### Secondary
 
-- **Soft lilac** (`lilac`): a calm tinted panel ground and text selection.
+- **Soft linen** (`linen`): a calm tinted panel ground and text selection.
 - **Muted mint** (`mint`): alternate panel state, light accents on dark grounds and closing containers.
 
 ### Neutral
@@ -224,7 +226,7 @@ Filled actions are calm and definite. The primary action uses the frontmatter co
 
 ### Tinted containers and segmented controls
 
-Large panels have restrained corners and generous internal padding. A native radio group uses two equal-width segments in a translucent white rail. Selection changes the segment to the mist ground and semibold text; focus remains on the visible segment with a two-pixel outline offset. State changes may update a panel ground from lilac to mint over 400ms, keeping information in place and exposed through a polite live region. Reduced-motion users receive immediate changes.
+Large panels have restrained corners and generous internal padding. A native radio group uses two equal-width segments in a translucent white rail. Selection changes the segment to the mist ground and semibold text; focus remains on the visible segment with a two-pixel outline offset. State changes may update a panel ground from linen to mint over 400ms, keeping information in place and exposed through a polite live region. Reduced-motion users receive immediate changes.
 
 ### Fields
 
@@ -244,11 +246,11 @@ Open sections use fine top rules and asymmetric heading/prose columns. Qualifica
 
 ### Fee and hours panels
 
-Fee panels reuse lilac, the large panel radius and panel padding, with a large tabular amount, smaller currency unit and a ruled duration row. Hours panels reuse mint with a full-width collapsed table, semibold day headings, tabular times and fine translucent rules. Both use reduced panel padding on narrow screens. Payment-method labels are static outlined tags, not interactive controls.
+Fee panels reuse linen, the large panel radius and panel padding, with a large tabular amount, smaller currency unit and a ruled duration row. Hours panels reuse mint with a full-width collapsed table, semibold day headings, tabular times and fine translucent rules. Both use reduced panel padding on narrow screens. Payment-method labels are static outlined tags, not interactive controls.
 
 ### Reading navigation and closing callout
 
-Practice navigation is a lilac side rail with ruled links, at least 56px high; the current link is bold and declared with `aria-current`. It follows the reading column when stacked. Article and legal prose remain bounded, with underlined inline links and tables allowed to scroll horizontally. The shared mint appointment callout reuses the homepage action and phone-link treatments; its actions stack on mobile. Interior FAQs retain the existing native disclosure treatment.
+Practice navigation is a linen side rail with ruled links, at least 56px high; the current link is bold and declared with `aria-current`. It follows the reading column when stacked. Article and legal prose remain bounded, with underlined inline links and tables allowed to scroll horizontally. The shared mint appointment callout reuses the homepage action and phone-link treatments; its actions stack on mobile. Interior FAQs retain the existing native disclosure treatment.
 
 ### Optional contact map
 

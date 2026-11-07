@@ -12,9 +12,9 @@
         "role": "primary",
         "displayName": "Deep blue-green"
       },
-      "lilac": {
+      "linen": {
         "role": "secondary",
-        "displayName": "Soft lilac"
+        "displayName": "Soft linen"
       },
       "mint": {
         "role": "secondary",
@@ -211,7 +211,7 @@
     "accessibility": {
       "focus": "3px solid var(--color-primary), offset 5px; var(--color-mint) on dark grounds",
       "segmentedFocus": "3px solid var(--color-primary), offset 2px",
-      "selection": "var(--color-lilac) ground with var(--color-deep) text"
+      "selection": "var(--color-linen) ground with var(--color-deep) text"
     },
     "interiorTypographyContexts": [
       {
@@ -258,18 +258,18 @@
     {
       "name": "Fee panel",
       "kind": "card",
-      "refersTo": "panel-lilac",
-      "description": "Lilac fee surface with tabular amount and a ruled duration row.",
+      "refersTo": "panel-linen",
+      "description": "Linen fee surface with tabular amount and a ruled duration row.",
       "html": "<section class=\"ds-fee\"><h2>Consultation</h2><p class=\"ds-amount\">90 <span>€</span></p><p class=\"ds-duration\">Durée de la séance</p></section>",
-      "css": ".ds-fee{font-family:var(--font-sans);color:var(--color-fg);background:var(--color-lilac);border-radius:var(--radius-xl);padding:2.5rem}.ds-fee h2{font-size:1.5rem;font-weight:500;line-height:1.2;letter-spacing:-.025em;margin:0}.ds-amount{font-size:4.5rem;font-weight:500;line-height:1.15;letter-spacing:-.035em;font-variant-numeric:tabular-nums;margin:2rem 0 0}.ds-amount span{font-size:2.25rem}.ds-duration{margin:1.25rem 0 0;padding-top:1.25rem;border-top:1px solid rgb(36 63 74 / 25%);font-size:.875rem}@media(max-width:640px){.ds-fee{padding:1.75rem}.ds-amount{font-size:4rem}}@media(max-width:360px){.ds-fee{padding:1.25rem}}"
+      "css": ".ds-fee{font-family:var(--font-sans);color:var(--color-fg);background:var(--color-linen);border-radius:var(--radius-xl);padding:2.5rem}.ds-fee h2{font-size:1.5rem;font-weight:500;line-height:1.2;letter-spacing:-.025em;margin:0}.ds-amount{font-size:4.5rem;font-weight:500;line-height:1.15;letter-spacing:-.035em;font-variant-numeric:tabular-nums;margin:2rem 0 0}.ds-amount span{font-size:2.25rem}.ds-duration{margin:1.25rem 0 0;padding-top:1.25rem;border-top:1px solid rgb(36 63 74 / 25%);font-size:.875rem}@media(max-width:640px){.ds-fee{padding:1.75rem}.ds-amount{font-size:4rem}}@media(max-width:360px){.ds-fee{padding:1.25rem}}"
     },
     {
       "name": "Practice navigation",
       "kind": "nav",
-      "refersTo": "panel-lilac",
-      "description": "Lilac reading side rail with ruled links and a bold current-page state.",
+      "refersTo": "panel-linen",
+      "description": "Linen reading side rail with ruled links and a bold current-page state.",
       "html": "<aside class=\"ds-practice\"><h2>Les approches</h2><nav aria-label=\"Approches\"><a href=\"#approche\" aria-current=\"page\">Approche intégrative</a><a href=\"#autre\">Autre approche</a></nav></aside>",
-      "css": ".ds-practice{font-family:var(--font-sans);color:var(--color-fg);padding:2rem;background:var(--color-lilac);border-radius:var(--radius-xl)}.ds-practice h2{font-size:1.375rem;font-weight:500;line-height:1.2;letter-spacing:-.035em;margin:0 0 1.25rem}.ds-practice a{display:flex;align-items:center;min-height:56px;padding-block:.875rem;border-top:1px solid rgb(36 63 74 / 25%);font-size:.8125rem;color:inherit;text-decoration:none}.ds-practice a[aria-current]{font-weight:700}.ds-practice a:hover{text-decoration:underline}.ds-practice a:focus-visible{outline:3px solid var(--color-primary);outline-offset:5px}@media(max-width:900px){.ds-practice{padding:1.5rem}}@media(max-width:640px){.ds-practice{padding:1.75rem}}"
+      "css": ".ds-practice{font-family:var(--font-sans);color:var(--color-fg);padding:2rem;background:var(--color-linen);border-radius:var(--radius-xl)}.ds-practice h2{font-size:1.375rem;font-weight:500;line-height:1.2;letter-spacing:-.035em;margin:0 0 1.25rem}.ds-practice a{display:flex;align-items:center;min-height:56px;padding-block:.875rem;border-top:1px solid rgb(36 63 74 / 25%);font-size:.8125rem;color:inherit;text-decoration:none}.ds-practice a[aria-current]{font-weight:700}.ds-practice a:hover{text-decoration:underline}.ds-practice a:focus-visible{outline:3px solid var(--color-primary);outline-offset:5px}@media(max-width:900px){.ds-practice{padding:1.5rem}}@media(max-width:640px){.ds-practice{padding:1.75rem}}"
     }
   ],
   "narrative": {
@@ -277,7 +277,7 @@
     "overview": "A professional, modern and calm world with open space, confident sans-serif typography and gently tinted surfaces. Dynamism comes from scale, contrasting grounds and useful state changes. Flat surfaces, fine rules and restrained corners support an attentive visual voice.",
     "keyCharacteristics": [
       "Large medium-weight headings",
-      "Lilac and mint grounds with blue-grey ink",
+      "Linen and mint grounds with blue-grey ink",
       "Functional motion and visible keyboard states"
     ],
     "rules": [

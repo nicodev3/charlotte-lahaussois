@@ -136,7 +136,7 @@
 }
 .about-summary {
   padding: 2.75rem;
-  background: var(--color-lilac);
+  background: var(--color-linen);
   border-radius: var(--radius-xl);
 }
 .about-summary h2 {
@@ -262,7 +262,7 @@
 }
 [data-component="pricing.item"] {
   padding: 2.5rem;
-  background: var(--color-lilac);
+  background: var(--color-linen);
   border-radius: var(--radius-xl);
 }
 [data-component="pricing.item"] h2 {
@@ -576,7 +576,7 @@
 }
 .practice-navigation {
   padding: 2rem;
-  background: var(--color-lilac);
+  background: var(--color-linen);
   border-radius: var(--radius-xl);
 }
 .practice-navigation h2 {
